@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>cat-o-roms · DCC</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body class="cat">
+  <div class="cat-bg" aria-hidden="true">
+    <div class="cat-bg-stripe cat-bg-a">DEWEY CATALOG CO.</div>
+    <div class="cat-bg-stripe cat-bg-b">CAT-O-ROMS · CAT-O-ROMS · CAT-O-ROMS</div>
+    <div class="cat-bg-stripe cat-bg-c">THE DRAWER THAT LISTS THE DRAWERS</div>
+  </div>
+
+  <header class="cat-bar" data-deck-chrome>
+    <span class="cat-logo" data-deck-menu title="Menu">cat<strong>-o-</strong>roms</span>
+    <span class="cat-drag" data-deck-drag aria-hidden="true"></span>
+    <div class="cat-win" data-deck-window-controls></div>
+  </header>
+
+  <main class="cat-main">
+    <p class="cat-kicker" id="kicker">loading drawer…</p>
+
+    <div class="cat-filters">
+      <button type="button" class="cat-f is-on" data-filter="all">ALL</button>
+      <button type="button" class="cat-f" data-filter="desk">DESK</button>
+      <button type="button" class="cat-f" data-filter="shipped">SHIPPED</button>
+      <button type="button" class="cat-f" data-filter="idea">IDEA</button>
+      <button type="button" class="cat-f" data-filter="mausoleum">MAUSOLEUM</button>
+      <button type="button" class="cat-f" data-view="makers">MAKERS</button>
+    </div>
+
+    <section class="cat-panel cat-panel-makers" id="makersPanel" hidden>
+      <h2 class="cat-h">makers on file</h2>
+      <ul class="cat-list" id="makerList"></ul>
+    </section>
+
+    <section class="cat-panel" id="romPanel">
+      <h2 class="cat-h">roms in the drawer <span class="cat-count" id="romCount"></span></h2>
+      <ul class="cat-list cat-rom-list" id="romList"></ul>
+    </section>
+
+    <p class="cat-foot" id="foot">DCC · if this ROM is missing from the list, the braid is broken</p>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

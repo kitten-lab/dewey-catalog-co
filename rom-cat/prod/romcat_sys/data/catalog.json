@@ -1,0 +1,341 @@
+{
+  "schema": "rom-cat.v1",
+  "house": "CO.DCC",
+  "sku": "CO.DCC-001-ROMCAT",
+  "title": "ROM Cat",
+  "whisper": "the catalog that files the makers · and the makers' ROMs",
+  "producers": [
+    {
+      "id": "dcc",
+      "name": "Dewey Catalog Co.",
+      "chip_code": "CO.DCC",
+      "mission": "We file what the other makers make. We file ourselves. Quaint library systems for lists that matter.",
+      "hands_ven": "DCO",
+      "notes": "First ROM sets the house look. Keep the sticky cabinet (cat-o-roms) as a separate cute accident — not this catalog.",
+      "address": "ALICE_BOX/dewey-catalog-co/"
+    },
+    {
+      "id": "charlies",
+      "name": "Charlie's Toys",
+      "chip_code": "CO.TOY",
+      "mission": "Time machines, import saws, slightly illegal fun.",
+      "hands_ven": "",
+      "notes": "",
+      "address": "ALICE_BOX/charlies-toys/"
+    },
+    {
+      "id": "datbox",
+      "name": "DatBox Studio",
+      "chip_code": "CO.DBS",
+      "mission": "Specialized bags for world chunks.",
+      "hands_ven": "",
+      "notes": "",
+      "address": "ALICE_BOX/datbox-studio/"
+    },
+    {
+      "id": "bigbox",
+      "name": "Big Box Company",
+      "chip_code": "CO.BBC",
+      "mission": "Aggressively unsexy documentation industrial.",
+      "hands_ven": "",
+      "notes": "",
+      "address": "ALICE_BOX/big-box-company/"
+    },
+    {
+      "id": "wbs",
+      "name": "World Builder Studios",
+      "chip_code": "CO.WBS",
+      "mission": "Inhabit-able world builders. Stages you walk into.",
+      "hands_ven": "",
+      "notes": "",
+      "address": "ALICE_BOX/world-builder-studios/"
+    },
+    {
+      "id": "chesters",
+      "name": "Chester's Imports",
+      "chip_code": "CO.IMP",
+      "mission": "The shop. Terminals leak from severed loops. Not a studio.",
+      "hands_ven": "",
+      "notes": "",
+      "address": "ALICE_BOX/chesters-imports/"
+    },
+    {
+      "id": "something-mattered-here-2242",
+      "name": "Something Mattered Here",
+      "chip_code": "CO.SMH",
+      "mission": "Something mattered here. That's the whole thesis.",
+      "hands_ven": "CAT-GIRL",
+      "notes": "",
+      "address": "unset"
+    },
+    {
+      "id": "bar-b-games-cb3c",
+      "name": "BAR-B Games",
+      "chip_code": "CO.BBG",
+      "mission": "Barb B Vale's Game ROMs. Mystical toys for mystical dolls.",
+      "hands_ven": "",
+      "notes": "",
+      "address": ""
+    },
+    {
+      "id": "kde",
+      "name": "KDE Fugue Inc.",
+      "chip_code": "CO.KDE",
+      "mission": "Strange looping pocket machines and amnesia detectives. Slot-keyboard narrative toys (Notes & Chords). Cases that drip. A detective that cannot remember keeps investigating the same shit. Chaos with a K.",
+      "hands_ven": "",
+      "notes": "Merged CO.FIN (Fugue Inc.) into CO.KDE. One house: looping pocket games + fugue detectives. Physical toys may still live under charlies-toys until a company island exists.",
+      "address": "ALICE_BOX/charlies-toys/kde-notes-chords/"
+    },
+    {
+      "id": "mypt",
+      "name": "My Pocket Things",
+      "chip_code": "CO.MYPT",
+      "mission": "Pocket apps for one kind of clay. Not terminals. Not global software. Chapbooks, and whatever else fits in a pocket later.",
+      "hands_ven": "",
+      "notes": "First SKU: chapbook maker. Teenage zine energy — heavy poetry, not kawaii.",
+      "address": "ALICE_BOX/my-pocket-things/"
+    },
+    {
+      "id": "jx",
+      "name": "Jack's Cross",
+      "chip_code": "CO.JX",
+      "mission": "Concordance desk and Cab into jx papers.",
+      "hands_ven": "",
+      "notes": "",
+      "address": "ALICE_BOX/jacks-cross/"
+    }
+  ],
+  "roms": [
+    {
+      "id": "romcat",
+      "producer_id": "dcc",
+      "name": "ROM Cat",
+      "chip_code": "CO.DCC-001-ROMCAT",
+      "description": "Catalog of ROM producers and their SKUs. SKU is a ROM chip code. Lists itself.",
+      "status": "desk",
+      "address": "ALICE_BOX/dewey-catalog-co/rom-cat/",
+      "notes": "Built from DCO REQ rev 7.",
+      "launcher_show": true
+    },
+    {
+      "id": "sticky-cat",
+      "producer_id": "dcc",
+      "name": "cat-o-roms (sticky face)",
+      "chip_code": "CO.DCC-STICKY",
+      "description": "Cute crooked sticky drawer. Not the yellow pages. Keep; do not destroy; do not pretend it is Fry's.",
+      "status": "desk",
+      "address": "ALICE_BOX/dewey-catalog-co/cat-o-roms/",
+      "notes": "Accidental art object. May rehome as meaningless sticky-notes ROM later.",
+      "launcher_show": false
+    },
+    {
+      "id": "lorebox",
+      "producer_id": "datbox",
+      "name": "loreBOX",
+      "chip_code": "CO.DAT-LORE",
+      "description": "LORE mats · reference DATBOX ROM.",
+      "status": "shipped",
+      "address": "ALICE_BOX/datbox-studio/lore-box/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "shotbox",
+      "producer_id": "datbox",
+      "name": "shotBOX",
+      "chip_code": "CO.DAT-SHOT",
+      "description": "SHOT mats · cuts of the world.",
+      "status": "broken",
+      "address": "ALICE_BOX/datbox-studio/shot-box/",
+      "notes": "Currently broken — do not expect clean launch.",
+      "launcher_show": true
+    },
+    {
+      "id": "promptbox",
+      "producer_id": "datbox",
+      "name": "promptBOX",
+      "chip_code": "CO.DAT-PROMPT",
+      "description": "Prompt decks.",
+      "status": "broken",
+      "address": "ALICE_BOX/datbox-studio/prompt-box/",
+      "notes": "Currently broken — do not expect clean launch.",
+      "launcher_show": true
+    },
+    {
+      "id": "sopr",
+      "producer_id": "bigbox",
+      "name": "sopr Documenter",
+      "chip_code": "SPR-403",
+      "description": "Sections, blocks, fluorescent honesty.",
+      "status": "shipped",
+      "address": "ALICE_BOX/big-box-company/sopr-documenter/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "dos",
+      "producer_id": "wbs",
+      "name": "Digital Office Spaces",
+      "chip_code": "CO.WBS-DOS",
+      "description": "Office-shaped world builder · TUI.",
+      "status": "desk",
+      "address": "ALICE_BOX/world-builder-studios/dos/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "sdk-import",
+      "producer_id": "charlies",
+      "name": "sdk-import-station",
+      "chip_code": "CO.CHAR-SDK",
+      "description": "Sanitation, glass, multi-color found terminals (IO AB ICU DRX RX DCO).",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/sdk-import-station/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "ineffable",
+      "producer_id": "charlies",
+      "name": "ineffable-box",
+      "chip_code": "CO.CHAR-INEFF",
+      "description": "Omens, hymns, secrets. Throw in.",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/ineffable-box/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "machina",
+      "producer_id": "charlies",
+      "name": "meta-time-machine",
+      "chip_code": "CO.CHAR-MTM",
+      "description": "Walk sealed glass. TPS books.",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/meta-time-machine/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "deck-host",
+      "producer_id": "chesters",
+      "name": "The Deck Host",
+      "chip_code": "CO.HOST-DECK",
+      "description": "Hosts ROMs (pywebview). Primary product face: ROM Launcher.",
+      "status": "desk",
+      "address": "ALICE_BOX/the-deck-host/",
+      "notes": " Launcher SKU CO.HOST-001-LAUNCH under same island.",
+      "launcher_show": false
+    },
+    {
+      "id": "cat-o-vens",
+      "producer_id": "dcc",
+      "name": "cat-o-vens",
+      "chip_code": "CO.DCC-002-VENS",
+      "description": "Later: codes / alts catalog. Same cabinet family, different drawer.",
+      "status": "idea",
+      "address": "",
+      "notes": "Not built. Do not call it a book.",
+      "launcher_show": true
+    },
+    {
+      "id": "terminal-prolog-5e9b",
+      "producer_id": "something-mattered-here-2242",
+      "name": "Terminal Prolog",
+      "chip_code": "SMH-001-PROLOG",
+      "description": "YOU ARE SOMEWHERE. That is all there is to know. Can you even think anymore?",
+      "status": "mausoleum",
+      "address": "",
+      "notes": "Recover old PY pre-build on ROM from mausoleum",
+      "launcher_show": false
+    },
+    {
+      "id": "the-forgetting-house-602d",
+      "producer_id": "something-mattered-here-2242",
+      "name": "The Forgetting House",
+      "chip_code": "SMH-002-TFH",
+      "description": "You keep resetting. Again and again. Something mattered here, but what? Can you put the memories back together while you keep forgetting?",
+      "status": "idea",
+      "address": "",
+      "notes": "",
+      "launcher_show": false
+    },
+    {
+      "id": "morana-arcana-def6",
+      "producer_id": "bar-b-games-cb3c",
+      "name": "Morana Arcana",
+      "chip_code": "CO.BBG-001-ARCANA",
+      "description": "A tarot app. Of a sort. Load decks. Pull cards. Find meaning in the BARBs.",
+      "status": "idea",
+      "address": "",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "my-pi-kitten-detective-chapter-179b",
+      "producer_id": "kde",
+      "name": "My PI: Kitten Detective Chapter I",
+      "chip_code": "CO.KDE-002-KD1",
+      "description": "A strange town. A detective who can't remember her own name. The cases keep looping. Can the mystery be found between the lines?",
+      "status": "idea",
+      "address": "",
+      "notes": " · was CO.FIN; merged into CO.KDE",
+      "launcher_show": true
+    },
+    {
+      "id": "kde-notes-chords",
+      "producer_id": "kde",
+      "name": "KDE Notes & Chords",
+      "chip_code": "CO.KDE-001-INSTR",
+      "description": "Instrumental Stories / KDE Notes & Chords: one row of 15 keys. Match plays chord from strip positions. Narrative fragments, not cash prizes.",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/kde-notes-chords/",
+      "notes": "Producer CO.KDE (not CO.TOY). Path under charlies-toys is temporary housing. UI: ONE horizontal strip (musical sheet), not a casino 5x3 grid.",
+      "launcher_show": true
+    },
+    {
+      "id": "pocket-chapbook",
+      "producer_id": "mypt",
+      "name": "My Pocket Chapbook",
+      "chip_code": "CO.MYPT-001-CHAPS",
+      "description": "Poem pool + chapbooks with sections. Reorder page-sheets to tell the story. Pocket press, not a terminal.",
+      "status": "desk",
+      "address": "ALICE_BOX/my-pocket-things/pocket-chapbook/",
+      "notes": "DCO REQ SKU 001-CHAPS. Empty shells for Ocean Cried Blood / Body Is a Water.",
+      "launcher_show": true
+    },
+    {
+      "id": "rom-launcher",
+      "producer_id": "chesters",
+      "name": "ROM Launcher",
+      "chip_code": "CO.HOST-001-LAUNCH",
+      "description": "Start menu for ROMs. Primary Deck Host face. Cases on a desk. Quiet launch.",
+      "status": "desk",
+      "address": "ALICE_BOX/the-deck-host/rom-launcher/",
+      "notes": "Reads ROM Cat; launcher_show toggle; recipes in launches.json",
+      "launcher_show": false
+    },
+    {
+      "id": "concor",
+      "producer_id": "jx",
+      "name": "Jack's Concor",
+      "chip_code": "CO.JX-001-CONCOR",
+      "description": "Desk concordance: letters Strong English Cab.",
+      "status": "desk",
+      "address": "ALICE_BOX/jacks-cross/the-concor/",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "injector",
+      "producer_id": "chesters",
+      "name": "The Injector",
+      "chip_code": "CO.IMP-INJ",
+      "description": "Chester injector.",
+      "status": "desk",
+      "address": "ALICE_BOX/chesters-imports/the-injector/",
+      "notes": "",
+      "launcher_show": true
+    }
+  ]
+}

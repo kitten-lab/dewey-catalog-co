@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ROM Cat · CO.DCC-001-ROMCAT</title>
+  <link rel="stylesheet" href="/app.css" />
+</head>
+<body class="rc">
+  <div class="rc-bg" aria-hidden="true">
+    <div class="rc-bg-line rc-bg-a">DEWEY CATALOG CO.</div>
+    <div class="rc-bg-line rc-bg-b">INDEX · SHELF · BIN</div>
+  </div>
+
+  <header class="rc-bar" data-deck-chrome>
+    <span class="rc-logo" data-deck-menu>ROM <strong>Cat</strong></span>
+    <span class="rc-sku">CO.DCC-001-ROMCAT</span>
+    <span class="rc-drag" data-deck-drag aria-hidden="true"></span>
+    <div class="rc-win" data-deck-window-controls></div>
+  </header>
+
+  <main class="rc-main">
+    <p class="rc-kicker" id="kicker">opening the catalog…</p>
+
+    <!-- PRODUCER LIST (yellow pages root) -->
+    <section id="viewProducers" class="rc-view">
+      <div class="rc-toolbar">
+        <h1 class="rc-h">Producers on file</h1>
+        <button type="button" class="rc-btn" id="btnNewProducer">+ producer</button>
+      </div>
+      <ul class="rc-shelf" id="producerShelf"></ul>
+    </section>
+
+    <!-- ONE PRODUCER (go inside) -->
+    <section id="viewProducer" class="rc-view" hidden>
+      <button type="button" class="rc-back" id="btnBack">← all producers</button>
+      <article class="rc-index-card rc-producer-card" id="producerCard"></article>
+      <div class="rc-toolbar">
+        <h2 class="rc-h">ROMs on this shelf</h2>
+        <button type="button" class="rc-btn" id="btnNewRom">+ ROM</button>
+      </div>
+      <ul class="rc-bins" id="romBins"></ul>
+    </section>
+
+    <!-- FORMS -->
+    <dialog class="rc-dialog" id="dlgProducer">
+      <form method="dialog" id="formProducer" class="rc-form">
+        <h3 class="rc-form-h" id="dlgProducerTitle">Producer</h3>
+        <input type="hidden" name="id" id="p_id" />
+        <label>Company name <input name="name" id="p_name" required /></label>
+        <label>Company chip code <input name="chip_code" id="p_chip" placeholder="CO.DCC" /></label>
+        <label>Mission statement <textarea name="mission" id="p_mission" rows="3"></textarea></label>
+        <label>Current hands operator (VEN) <input name="hands_ven" id="p_hands" placeholder="DCO" /></label>
+        <label>Address in ALICE_BOX <input name="address" id="p_address" placeholder="ALICE_BOX/…" /></label>
+        <label>Free notes <textarea name="notes" id="p_notes" rows="2"></textarea></label>
+        <div class="rc-form-actions">
+          <button type="submit" class="rc-btn rc-btn-primary" value="save">file card</button>
+          <button type="button" class="rc-btn" id="p_cancel">cancel</button>
+          <button type="button" class="rc-btn rc-btn-danger" id="p_delete" hidden>remove producer</button>
+        </div>
+        <p class="rc-form-err" id="p_err" hidden></p>
+      </form>
+    </dialog>
+
+    <dialog class="rc-dialog" id="dlgRom">
+      <form method="dialog" id="formRom" class="rc-form">
+        <h3 class="rc-form-h" id="dlgRomTitle">ROM</h3>
+        <input type="hidden" name="id" id="r_id" />
+        <input type="hidden" name="producer_id" id="r_producer" />
+        <label>ROM name <input name="name" id="r_name" required /></label>
+        <label>ROM chip code (SKU) <input name="chip_code" id="r_chip" placeholder="CO.DCC-001-ROMCAT" /></label>
+        <label>Description <textarea name="description" id="r_desc" rows="3"></textarea></label>
+        <label>Release status
+          <select name="status" id="r_status">
+            <option value="idea">idea</option>
+            <option value="desk">desk</option>
+            <option value="shipped">shipped</option>
+            <option value="mausoleum">mausoleum</option>
+            <option value="broken">broken</option>
+          </select>
+        </label>
+        <label>Address in ALICE_BOX <input name="address" id="r_address" /></label>
+        <label class="rc-check"><input type="checkbox" id="r_launcher" /> Show on ROM Launcher (start menu)</label>
+        <label>Free notes <textarea name="notes" id="r_notes" rows="2"></textarea></label>
+        <div class="rc-form-actions">
+          <button type="submit" class="rc-btn rc-btn-primary" value="save">file card</button>
+          <button type="button" class="rc-btn" id="r_cancel">cancel</button>
+          <button type="button" class="rc-btn rc-btn-danger" id="r_delete" hidden>remove ROM</button>
+        </div>
+        <p class="rc-form-err" id="r_err" hidden></p>
+      </form>
+    </dialog>
+
+    <p class="rc-foot" id="foot">Dewey Catalog Co. · the braid holds if this ROM is on its own shelf</p>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

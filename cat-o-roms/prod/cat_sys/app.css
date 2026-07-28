@@ -1,0 +1,332 @@
+/* cat-o-roms · Dewey Catalog Co.
+   Intentional weird. Not loreBOX. Not Product Hunt.
+   Leaking cabinet energy. */
+
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&family=VT323&family=Press+Start+2P&display=swap");
+
+:root {
+  --ink: #1a1208;
+  --paper: #e8dcc4;
+  --card: #f3e6c8;
+  --tab: #c45c26;
+  --tab2: #2a6b5a;
+  --wrong: #6b2d8b;
+  --line: #3a2a18;
+  --muted: #6a5840;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+body.cat {
+  font-family: "Special Elite", "VT323", cursive, monospace;
+  font-size: 18px;
+  color: var(--ink);
+  background: var(--paper);
+  position: relative;
+}
+
+/* huge underplayed wrongness — intentional */
+.cat-bg {
+  position: fixed;
+  inset: -20%;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.11;
+}
+
+.cat-bg-stripe {
+  position: absolute;
+  white-space: nowrap;
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: var(--ink);
+}
+
+.cat-bg-a {
+  top: 28%;
+  left: -10%;
+  transform: rotate(-12deg);
+  font-size: 1.1rem;
+  letter-spacing: 0.35em;
+}
+
+.cat-bg-b {
+  top: 52%;
+  left: -5%;
+  transform: rotate(7deg);
+  color: var(--tab);
+}
+
+.cat-bg-c {
+  top: 72%;
+  left: 5%;
+  transform: rotate(-4deg);
+  font-size: 0.55rem;
+  color: var(--wrong);
+}
+
+.cat-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.55rem;
+  background: #2a2010;
+  color: var(--paper);
+  border-bottom: 3px solid var(--tab);
+  transform: rotate(-0.4deg);
+  margin: 0.25rem 0.35rem 0;
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cat-logo {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.06em;
+  cursor: default;
+  padding: 0.25rem 0.2rem;
+}
+
+.cat-logo strong {
+  color: #ffb070;
+}
+
+.cat-drag {
+  flex: 1;
+  height: 1.2rem;
+  cursor: grab;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 4px,
+    rgba(255, 255, 255, 0.08) 4px,
+    rgba(255, 255, 255, 0.08) 5px
+  );
+}
+
+.cat-win {
+  min-width: 4rem;
+}
+
+.cat-main {
+  position: relative;
+  z-index: 1;
+  height: calc(100% - 2.6rem);
+  overflow: auto;
+  padding: 0.85rem 1rem 2rem;
+  max-width: 42rem;
+  /* slightly crooked reading column */
+  transform: rotate(0.35deg);
+  margin-left: 0.4rem;
+}
+
+.cat-kicker {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+  border-left: 4px solid var(--tab2);
+  padding-left: 0.55rem;
+  transform: rotate(-1deg);
+}
+
+.cat-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.cat-f {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.38rem;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0.4rem 0.35rem;
+  border: 2px solid var(--line);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 0;
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+  transform: rotate(-1deg);
+}
+
+.cat-f:nth-child(even) {
+  transform: rotate(1.2deg);
+}
+
+.cat-f:nth-child(3) {
+  transform: rotate(-2deg);
+  border-color: var(--wrong);
+}
+
+.cat-f.is-on {
+  background: var(--tab);
+  color: #fff8e8;
+  border-color: #8a3010;
+}
+
+.cat-f:hover {
+  filter: brightness(1.05);
+}
+
+.cat-h {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.48rem;
+  letter-spacing: 0.08em;
+  margin: 0 0 0.65rem;
+  color: var(--tab2);
+  transform: rotate(-0.8deg);
+}
+
+.cat-count {
+  color: var(--tab);
+  font-size: 0.4rem;
+}
+
+.cat-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.cat-card {
+  position: relative;
+  background: var(--card);
+  border: 2px solid var(--line);
+  padding: 0.55rem 0.65rem 0.5rem;
+  box-shadow: 3px 4px 0 rgba(58, 42, 24, 0.18);
+  transform: rotate(-0.6deg);
+}
+
+.cat-card:nth-child(even) {
+  transform: rotate(0.7deg);
+  margin-left: 0.45rem;
+}
+
+.cat-card:nth-child(3n) {
+  transform: rotate(-1.1deg);
+  border-color: var(--tab2);
+}
+
+.cat-card.is-self {
+  border-color: var(--wrong);
+  border-width: 3px;
+  background: #efe0ff;
+  box-shadow: 4px 4px 0 rgba(107, 45, 139, 0.25);
+}
+
+.cat-card-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35rem 0.65rem;
+  margin-bottom: 0.25rem;
+}
+
+.cat-name {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.5rem;
+  letter-spacing: 0.04em;
+}
+
+.cat-sku {
+  font-size: 0.85rem;
+  color: var(--tab);
+  font-family: "VT323", monospace;
+}
+
+.cat-status {
+  font-family: "Press Start 2P", monospace;
+  font-size: 0.32rem;
+  padding: 0.2rem 0.3rem 0.15rem;
+  border: 1px solid var(--line);
+  margin-left: auto;
+  background: #fff8e8;
+}
+
+.cat-status[data-s="desk"] {
+  background: #d4f0e4;
+  border-color: var(--tab2);
+}
+
+.cat-status[data-s="shipped"] {
+  background: #ffe0c0;
+  border-color: var(--tab);
+}
+
+.cat-status[data-s="idea"] {
+  background: #e8e0ff;
+  border-color: var(--wrong);
+}
+
+.cat-status[data-s="mausoleum"] {
+  background: #d0d0d0;
+  color: #444;
+  border-style: dashed;
+}
+
+.cat-maker {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin: 0 0 0.2rem;
+}
+
+.cat-line {
+  margin: 0.15rem 0 0;
+  font-size: 1rem;
+  line-height: 1.25;
+}
+
+.cat-path {
+  margin: 0.35rem 0 0;
+  font-family: "VT323", monospace;
+  font-size: 0.95rem;
+  color: var(--muted);
+  word-break: break-all;
+  opacity: 0.85;
+  transform: rotate(0.4deg);
+}
+
+.cat-foot {
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+  transform: rotate(-1.5deg);
+  max-width: 90%;
+  border-top: 1px dashed var(--line);
+  padding-top: 0.6rem;
+}
+
+.cat-panel-makers .cat-card {
+  border-left: 6px solid var(--tab2);
+}
+
+/* slightly broken scrollbar energy */
+.cat-main::-webkit-scrollbar {
+  width: 10px;
+}
+.cat-main::-webkit-scrollbar-track {
+  background: #d4c8a8;
+}
+.cat-main::-webkit-scrollbar-thumb {
+  background: var(--tab);
+  border: 2px solid #2a2010;
+}

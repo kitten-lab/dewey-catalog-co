@@ -1,0 +1,19 @@
+﻿# Runtime / agent noise
+**/__pycache__/
+*.py[cod]
+*.log
+*.err
+desk-server.log
+.webview_profiles/
+Thumbs.db
+.DS_Store
+.venv/
+venv/
+
+# Operator mats / papers — local only for now
+**/safe_box/**
+!**/safe_box/.gitkeep
+**/paper/
+**/store.json
+**/library.json
+**/data/*.log

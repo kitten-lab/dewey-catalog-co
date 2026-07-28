@@ -1,0 +1,169 @@
+{
+  "schema": "cat-o-roms.v0",
+  "house": "DCC",
+  "title": "cat-o-roms",
+  "whisper": "the drawer that lists the drawers",
+  "makers": [
+    {
+      "id": "dcc",
+      "name": "Dewey Catalog Co.",
+      "stem": "DCC",
+      "path": "dewey-catalog-co/",
+      "line": "we file what they make · we file ourselves"
+    },
+    {
+      "id": "charlies",
+      "name": "Charlie's Toys",
+      "stem": "CHAR",
+      "path": "charlies-toys/",
+      "line": "time machines · import saws · slightly illegal fun"
+    },
+    {
+      "id": "datbox",
+      "name": "DatBox Studio",
+      "stem": "DAT",
+      "path": "datbox-studio/",
+      "line": "specialized bags for world chunks"
+    },
+    {
+      "id": "bigbox",
+      "name": "Big Box Company",
+      "stem": "BIG",
+      "path": "big-box-company/",
+      "line": "aggressively unsexy documentation industrial"
+    },
+    {
+      "id": "wbs",
+      "name": "World Builder Studios",
+      "stem": "WBS",
+      "path": "world-builder-studios/",
+      "line": "stages you walk into"
+    },
+    {
+      "id": "chesters",
+      "name": "Chester's Imports",
+      "stem": "CHEST",
+      "path": "chesters-imports/",
+      "line": "the shop · not the studio · terminals leak from severed loops"
+    }
+  ],
+  "roms": [
+    {
+      "id": "cat-o-roms",
+      "name": "cat-o-roms",
+      "sku": "DCC-001",
+      "maker": "dcc",
+      "status": "desk",
+      "path": "dewey-catalog-co/cat-o-roms/",
+      "line": "this catalog · lists this catalog · geb"
+    },
+    {
+      "id": "lorebox",
+      "name": "loreBOX",
+      "sku": "DAT-LORE",
+      "maker": "datbox",
+      "status": "shipped",
+      "path": "datbox-studio/lore-box/",
+      "line": "LORE mats · polished on purpose · not us"
+    },
+    {
+      "id": "shotbox",
+      "name": "shotBOX",
+      "sku": "DAT-SHOT",
+      "maker": "datbox",
+      "status": "shipped",
+      "path": "datbox-studio/shot-box/",
+      "line": "SHOT mats · cuts of the world"
+    },
+    {
+      "id": "promptbox",
+      "name": "promptBOX",
+      "sku": "DAT-PROMPT",
+      "maker": "datbox",
+      "status": "desk",
+      "path": "datbox-studio/prompt-box/",
+      "line": "question decks"
+    },
+    {
+      "id": "sopr",
+      "name": "sopr Documenter",
+      "sku": "SPR-403",
+      "maker": "bigbox",
+      "status": "shipped",
+      "path": "big-box-company/sopr-documenter/",
+      "line": "sections · blocks · fluorescent honesty"
+    },
+    {
+      "id": "dos",
+      "name": "Digital Office Spaces",
+      "sku": "WBS-DOS",
+      "maker": "wbs",
+      "status": "desk",
+      "path": "world-builder-studios/dos/",
+      "line": "office-shaped world builder · TUI"
+    },
+    {
+      "id": "sdk-import",
+      "name": "sdk-import-station",
+      "sku": "CHAR-SDK",
+      "maker": "charlies",
+      "status": "desk",
+      "path": "charlies-toys/sdk-import-station/",
+      "line": "green glass · sanitation · multi-color found terminals"
+    },
+    {
+      "id": "ineffable",
+      "name": "ineffable-box",
+      "sku": "CHAR-INEFF",
+      "maker": "charlies",
+      "status": "desk",
+      "path": "charlies-toys/ineffable-box/",
+      "line": "omens · hymns · secrets · throw in"
+    },
+    {
+      "id": "machina",
+      "name": "meta-time-machine",
+      "sku": "CHAR-MTM",
+      "maker": "charlies",
+      "status": "desk",
+      "path": "charlies-toys/meta-time-machine/",
+      "line": "TPS Makana · walk sealed glass · polished cousin"
+    },
+    {
+      "id": "deck-host",
+      "name": "The Deck Host",
+      "sku": "HOST-DECK",
+      "maker": "chesters",
+      "status": "desk",
+      "path": "the-deck-host/",
+      "line": "hosts ROMs · engine island"
+    },
+    {
+      "id": "detective-k",
+      "name": "DetectiveK (edge)",
+      "sku": "EDGE-DK",
+      "maker": "chesters",
+      "status": "mausoleum",
+      "path": "Builds/my-pocket-internet/t/toys/-v1/DetectiveK",
+      "line": "pocket detective residue · not revived · card only"
+    },
+    {
+      "id": "tarot-reader",
+      "name": "Tarot Card Reader",
+      "sku": "IDEA-TAROT",
+      "maker": "charlies",
+      "status": "idea",
+      "path": "",
+      "line": "wanted ROM · not on desk yet"
+    },
+    {
+      "id": "cat-o-vens",
+      "name": "cat-o-vens",
+      "sku": "DCC-002",
+      "maker": "dcc",
+      "status": "idea",
+      "path": "",
+      "line": "later · codes / alts · same cabinet energy"
+    }
+  ]
+}

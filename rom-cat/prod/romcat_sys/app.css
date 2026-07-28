@@ -1,0 +1,549 @@
+/* ROM Cat · CO.DCC-001-ROMCAT
+   Library catalog · index cards · shelves · not SaaS · not sticky board */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap");
+
+:root {
+  --ink: #1a1410;
+  --paper: #efe6d4;
+  --card: #f7f0e0;
+  --rule: #3d2e1f;
+  --tab: #8b4518;
+  --shelf: #2c241c;
+  --muted: #6b5a48;
+  --ok: #2d5a3d;
+  --warn: #8a5a10;
+  --ghost: #5a4a6a;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body.rc {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--paper);
+  overflow: hidden;
+}
+
+.rc-bg {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.07;
+  overflow: hidden;
+}
+
+.rc-bg-line {
+  position: absolute;
+  white-space: nowrap;
+  font-family: "Special Elite", cursive;
+  letter-spacing: 0.25em;
+}
+
+.rc-bg-a {
+  top: 35%;
+  left: -8%;
+  transform: rotate(-8deg);
+  font-size: 1.4rem;
+}
+
+.rc-bg-b {
+  top: 62%;
+  left: 10%;
+  transform: rotate(5deg);
+  font-size: 0.9rem;
+}
+
+.rc-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0.75rem;
+  background: var(--shelf);
+  color: var(--paper);
+  border-bottom: 3px double var(--tab);
+}
+
+.rc-logo {
+  font-family: "Special Elite", cursive;
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+}
+
+.rc-logo strong {
+  color: #e8c090;
+}
+
+.rc-sku {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  opacity: 0.75;
+  letter-spacing: 0.04em;
+}
+
+.rc-drag {
+  flex: 1;
+  height: 1rem;
+  cursor: grab;
+  opacity: 0.35;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    rgba(255, 255, 255, 0.12) 3px,
+    rgba(255, 255, 255, 0.12) 4px
+  );
+}
+
+.rc-main {
+  position: relative;
+  z-index: 1;
+  height: calc(100% - 2.5rem);
+  overflow: auto;
+  /* fill the Deck Host frame — don't strand a skinny column in 1024×768 */
+  padding: 0.75rem 1rem 1.5rem;
+  max-width: none;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.rc-kicker {
+  margin: 0 0 0.75rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  color: var(--muted);
+  border-left: 3px solid var(--tab);
+  padding-left: 0.55rem;
+}
+
+.rc-toolbar {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.rc-h {
+  margin: 0;
+  font-family: "Special Elite", cursive;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+.rc-btn {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  padding: 0.4rem 0.65rem;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 0;
+}
+
+.rc-btn:hover {
+  background: #fff8ec;
+  border-color: var(--tab);
+}
+
+.rc-btn-primary {
+  background: var(--tab);
+  color: #fff8ec;
+  border-color: #5a2e10;
+}
+
+.rc-btn-primary:hover {
+  filter: brightness(1.08);
+  background: var(--tab);
+  color: #fff;
+}
+
+.rc-btn-danger {
+  color: #6a2020;
+  border-color: #8a4040;
+  margin-left: auto;
+}
+
+.rc-back {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.78rem;
+  background: none;
+  border: none;
+  color: var(--tab);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.rc-back:hover {
+  color: var(--ink);
+}
+
+/* producer shelf — index cards that fill the host width (desk ~1024) */
+.rc-shelf {
+  list-style: none;
+  margin: 0;
+  padding: 0.15rem 0 0;
+  display: grid;
+  /* ~3 across at 1024 with chrome; grows/shrinks cleanly */
+  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
+  gap: 0.75rem 0.8rem;
+  align-items: stretch;
+}
+
+.rc-shelf-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+  min-height: 7.4rem;
+  padding: 0.55rem 0.6rem 0.5rem;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--tab);
+  box-shadow: 1px 2px 0 rgba(40, 28, 16, 0.1);
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  width: 100%;
+  /* ruled index card */
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 1.05rem,
+    rgba(60, 40, 20, 0.07) 1.05rem,
+    rgba(60, 40, 20, 0.07) 1.08rem
+  );
+  transform: rotate(-0.35deg);
+}
+
+.rc-shelf-item:nth-child(even) {
+  transform: rotate(0.5deg);
+  border-top-color: var(--ok);
+}
+
+.rc-shelf-item:nth-child(3n) {
+  transform: rotate(-0.7deg);
+}
+
+.rc-shelf-item:hover {
+  background-color: #fffaf0;
+  filter: brightness(1.02);
+  z-index: 1;
+}
+
+.rc-shelf-name {
+  font-family: "Special Elite", cursive;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.rc-shelf-chip {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  color: var(--tab);
+  letter-spacing: 0.02em;
+}
+
+.rc-shelf-meta {
+  font-size: 0.78rem;
+  line-height: 1.3;
+  color: var(--muted);
+  margin: 0.15rem 0 0;
+  flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.rc-shelf-count {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.65rem;
+  color: var(--ink);
+  margin-top: auto;
+  padding-top: 0.3rem;
+  border-top: 1px dotted rgba(60, 40, 20, 0.25);
+  letter-spacing: 0.04em;
+}
+
+/* index card for open producer */
+.rc-index-card {
+  background: var(--card);
+  border: 1px solid var(--rule);
+  padding: 0.85rem 1rem 0.75rem;
+  margin-bottom: 1rem;
+  box-shadow: 3px 4px 0 rgba(40, 28, 16, 0.1);
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 1.45rem,
+    rgba(60, 40, 20, 0.06) 1.45rem,
+    rgba(60, 40, 20, 0.06) 1.5rem
+  );
+}
+
+.rc-index-top {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(60, 40, 20, 0.2);
+  padding-bottom: 0.4rem;
+}
+
+.rc-index-name {
+  font-family: "Special Elite", cursive;
+  font-size: 1.25rem;
+}
+
+.rc-index-chip {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--tab);
+}
+
+.rc-field {
+  margin: 0.35rem 0;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.rc-field strong {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.1rem;
+}
+
+.rc-edit-link {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  margin-top: 0.5rem;
+}
+
+/* ROM bins — product slips in a denser list (still not producer cards) */
+.rc-bins {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  /* use full width under company card */
+  max-width: none;
+}
+
+.rc-bin {
+  background: #faf6ee;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--shelf);
+  padding: 0.5rem 0.65rem 0.45rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.2rem 0.65rem;
+  box-shadow: none;
+}
+
+.rc-bin-name {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.rc-bin-chip {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--tab);
+  grid-column: 1;
+}
+
+.rc-status {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 0.15rem 0.35rem;
+  border: 1px solid var(--rule);
+  justify-self: end;
+  align-self: start;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.rc-status[data-s="desk"] {
+  background: #d8efe0;
+  border-color: var(--ok);
+}
+
+.rc-status[data-s="shipped"] {
+  background: #f5e0c8;
+  border-color: var(--warn);
+}
+
+.rc-status[data-s="idea"] {
+  background: #e8e0f0;
+  border-color: var(--ghost);
+}
+
+.rc-status[data-s="mausoleum"],
+.rc-status[data-s="broken"] {
+  background: #ddd;
+  border-style: dashed;
+}
+
+.rc-bin-desc {
+  grid-column: 1 / -1;
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.35;
+  color: var(--ink);
+  font-family: "Libre Baskerville", Georgia, serif;
+}
+
+.rc-bin-addr {
+  grid-column: 1 / -1;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--muted);
+  word-break: break-all;
+}
+
+/* open producer: company index card full width, then ROM slips */
+#viewProducer .rc-index-card {
+  max-width: none;
+}
+
+.rc-toolbar {
+  max-width: none;
+}
+
+.rc-bin-actions {
+  grid-column: 1 / -1;
+  margin-top: 0.25rem;
+}
+
+.rc-bin-actions button {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.7rem;
+  background: none;
+  border: none;
+  color: var(--tab);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.rc-empty {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  padding: 0.75rem;
+  border: 1px dashed var(--rule);
+}
+
+/* dialogs */
+.rc-dialog {
+  border: 2px solid var(--rule);
+  padding: 0;
+  background: var(--card);
+  max-width: 26rem;
+  width: calc(100% - 2rem);
+  box-shadow: 6px 8px 0 rgba(40, 28, 16, 0.15);
+}
+
+.rc-dialog::backdrop {
+  background: rgba(30, 22, 14, 0.45);
+}
+
+.rc-form {
+  padding: 1rem 1.1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.rc-form-h {
+  margin: 0 0 0.25rem;
+  font-family: "Special Elite", cursive;
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+
+.rc-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  letter-spacing: 0.03em;
+}
+
+.rc-form input,
+.rc-form textarea,
+.rc-form select {
+  font-family: "Libre Baskerville", Georgia, serif;
+  font-size: 0.95rem;
+  padding: 0.4rem 0.45rem;
+  border: 1px solid var(--rule);
+  background: #fffdf8;
+  color: var(--ink);
+  border-radius: 0;
+}
+
+.rc-form-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+  margin-top: 0.35rem;
+}
+
+.rc-form-err {
+  margin: 0;
+  color: #8a2020;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+}
+
+.rc-foot {
+  margin-top: 2rem;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--muted);
+  border-top: 1px solid rgba(60, 40, 20, 0.25);
+  padding-top: 0.65rem;
+}
+
+.rc-main::-webkit-scrollbar {
+  width: 10px;
+}
+.rc-main::-webkit-scrollbar-thumb {
+  background: var(--tab);
+  border: 2px solid var(--paper);
+}

@@ -114,8 +114,9 @@
       "description": "Catalog of ROM producers and their SKUs. SKU is a ROM chip code. Lists itself.",
       "status": "desk",
       "address": "ALICE_BOX/dewey-catalog-co/rom-cat/",
-      "notes": "Built from DCO REQ rev 7.",
-      "launcher_show": true
+      "notes": "Built from DCO REQ rev 7. plate_css customizes launcher logo sticker.",
+      "launcher_show": true,
+      "plate_css": "background: linear-gradient(165deg, #2a2010 0%, #120c08 55%, #0a0806 100%);\ncolor: #f0c060;\nfont-family: Georgia, \"Times New Roman\", serif;\nfont-size: 0.52rem;\nletter-spacing: 0.06em;"
     },
     {
       "id": "sticky-cat",
@@ -173,6 +174,17 @@
       "launcher_show": true
     },
     {
+      "id": "great-road-mapper",
+      "producer_id": "bigbox",
+      "name": "Great Road Mapper",
+      "chip_code": "CO.BBC-001-GRM",
+      "description": "Personal multi-title production board. Phases, workstreams, reverse-calc from ship.",
+      "status": "desk",
+      "address": "ALICE_BOX/big-box-company/great-road-mapper/",
+      "notes": "Workday strut. Port 42960. Not optional for launch shelf.",
+      "launcher_show": true
+    },
+    {
       "id": "dos",
       "producer_id": "wbs",
       "name": "Digital Office Spaces",
@@ -186,19 +198,20 @@
     {
       "id": "sdk-import",
       "producer_id": "charlies",
-      "name": "sdk-import-station",
-      "chip_code": "CO.CHAR-SDK",
+      "name": "TERMINALS",
+      "chip_code": "CO.TOY-001-TERMINAL",
       "description": "Sanitation, glass, multi-color found terminals (IO AB ICU DRX RX DCO).",
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/sdk-import-station/",
       "notes": "",
-      "launcher_show": true
+      "launcher_show": true,
+      "plate_css": "background-color: #051c08;\nbackground-image: radial-gradient(rgba(18, 190, 35, 0.2), #051c08 120%);\ncolor: #33ff33;"
     },
     {
       "id": "ineffable",
       "producer_id": "charlies",
-      "name": "ineffable-box",
-      "chip_code": "CO.CHAR-INEFF",
+      "name": "Ineffable Box",
+      "chip_code": "CO.TOY-002-USBOX",
       "description": "Omens, hymns, secrets. Throw in.",
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/ineffable-box/",
@@ -208,8 +221,8 @@
     {
       "id": "machina",
       "producer_id": "charlies",
-      "name": "meta-time-machine",
-      "chip_code": "CO.CHAR-MTM",
+      "name": "TPS Machina",
+      "chip_code": "CO.TOY-003-TMACH",
       "description": "Walk sealed glass. TPS books.",
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/meta-time-machine/",
@@ -291,7 +304,8 @@
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/kde-notes-chords/",
       "notes": "Producer CO.KDE (not CO.TOY). Path under charlies-toys is temporary housing. UI: ONE horizontal strip (musical sheet), not a casino 5x3 grid.",
-      "launcher_show": true
+      "launcher_show": true,
+      "plate_css": "background: linear-gradient(160deg, #1a1020 0%, #0c0a0e 50%, #141018 100%);\ncolor: #c45c6a;\nfont-family: \"Special Elite\", Georgia, serif;\nfont-size: 0.52rem;\nletter-spacing: 0.05em;"
     },
     {
       "id": "pocket-chapbook",
@@ -305,6 +319,17 @@
       "launcher_show": true
     },
     {
+      "id": "pocket-notebook",
+      "producer_id": "mypt",
+      "name": "My Pocket Notebook",
+      "chip_code": "CO.MYPT-002-NOTES",
+      "description": "Multiple cloth notebooks. Open a book, scrub pages, E to edit. Work brain and field notes — not chapbook, not a global notes app.",
+      "status": "desk",
+      "address": "ALICE_BOX/my-pocket-things/pocket-notebook/",
+      "notes": "DCO REQ SKU 002-NOTES. Port 43165. Seeded Daily Tracker from DOS betsoft office.",
+      "launcher_show": true
+    },
+    {
       "id": "rom-launcher",
       "producer_id": "chesters",
       "name": "ROM Launcher",
@@ -312,7 +337,7 @@
       "description": "Start menu for ROMs. Primary Deck Host face. Cases on a desk. Quiet launch.",
       "status": "desk",
       "address": "ALICE_BOX/the-deck-host/rom-launcher/",
-      "notes": "Reads ROM Cat; launcher_show toggle; recipes in launches.json",
+      "notes": "Reads ROM Cat as identity source of truth. launches.json recipes = run_script/port/flags only.",
       "launcher_show": false
     },
     {

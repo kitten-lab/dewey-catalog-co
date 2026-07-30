@@ -356,10 +356,10 @@
       "producer_id": "chesters",
       "name": "The Injector",
       "chip_code": "CO.IMP-INJ",
-      "description": "Chester injector.",
-      "status": "desk",
+      "description": "Chester crate post — force outside mail into a station. Glass works; launcher path sulking.",
+      "status": "broken",
       "address": "ALICE_BOX/chesters-imports/the-injector/",
-      "notes": "",
+      "notes": "Marked broken 2026-07-30: run-in-deck-host works from CLI; ROM Launcher spawn does not open glass. Unstick later.",
       "launcher_show": true
     }
   ]

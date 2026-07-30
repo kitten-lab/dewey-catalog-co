@@ -361,6 +361,17 @@
       "address": "ALICE_BOX/chesters-imports/the-injector/",
       "notes": "Marked broken 2026-07-30: run-in-deck-host works from CLI; ROM Launcher spawn does not open glass. Unstick later.",
       "launcher_show": true
+    },
+    {
+      "id": "sonabox-7d63",
+      "producer_id": "datbox",
+      "name": "sonaBOX",
+      "chip_code": "CO.DBS-SONA",
+      "description": "A box to hold your beings in. Especially if you want to forget their first names.",
+      "status": "desk",
+      "address": "ALICE_BOX/datbox-studio/sona-box/",
+      "notes": "Slice 0: .safebox SQLite · KVEN · notches · MD leaves. Port 42935.",
+      "launcher_show": true
     }
   ]
 }

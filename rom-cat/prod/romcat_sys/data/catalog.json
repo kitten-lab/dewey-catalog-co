@@ -134,10 +134,10 @@
       "producer_id": "datbox",
       "name": "loreBOX",
       "chip_code": "CO.DAT-LORE",
-      "description": "LORE mats · reference DATBOX ROM.",
-      "status": "shipped",
+      "description": "LORE mats · reference DATBOX ROM. No longer available for new clay — see VENBOX REQ.",
+      "status": "broken",
       "address": "ALICE_BOX/datbox-studio/lore-box/",
-      "notes": "",
+      "notes": "2026-07-30: parked for new work. Successor proposed: VENBOX (CO.DAT-VEN) under DCO REQ FK-DC-req-datbox-venbox-charbox-VDVC-b2e801. Existing .lorebox mats excavate later.",
       "launcher_show": true
     },
     {

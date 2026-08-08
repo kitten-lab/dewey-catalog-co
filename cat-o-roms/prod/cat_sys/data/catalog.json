@@ -62,9 +62,18 @@
       "name": "loreBOX",
       "sku": "DAT-LORE",
       "maker": "datbox",
-      "status": "shipped",
+      "status": "desk",
       "path": "datbox-studio/lore-box/",
-      "line": "LORE mats · polished on purpose · not us"
+      "line": "v2 Papers Please · empty · not JSON bags"
+    },
+    {
+      "id": "lorebox-v1-archive",
+      "name": "loreBOX v1 archive",
+      "sku": "DAT-LORE-V1",
+      "maker": "datbox",
+      "status": "archive",
+      "path": "datbox-studio/lore-box-v1-archive/",
+      "line": "JSON bags frozen · port 42928"
     },
     {
       "id": "shotbox",

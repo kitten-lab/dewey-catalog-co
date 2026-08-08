@@ -29,6 +29,9 @@ def main() -> int:
         return 1
 
     profile = os.environ.get("DECK_HOST_PROFILE", "desk").strip() or "desk"
+    # IDA03: 800×600 standard — zoomed-out catalog, not 1024 desk chrome
+    width = os.environ.get("ROMCAT_WIDTH", "800")
+    height = os.environ.get("ROMCAT_HEIGHT", "600")
     server_cmd = f"{sys.executable} server.py"
     cmd = [
         sys.executable,
@@ -37,6 +40,10 @@ def main() -> int:
         "ROM Cat",
         "--profile",
         profile,
+        "--width",
+        str(width),
+        "--height",
+        str(height),
         "--url",
         URL,
         "--health",

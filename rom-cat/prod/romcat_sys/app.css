@@ -1,19 +1,24 @@
 /* ROM Cat · CO.DCC-001-ROMCAT
-   Library catalog · index cards · shelves · not SaaS · not sticky board */
+   Toy-aisle catalog · cases as jewels · not warehouse · not brown dice den */
 
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Nunito:wght@600;700;800&family=Special+Elite&display=swap");
 
 :root {
-  --ink: #1a1410;
-  --paper: #efe6d4;
-  --card: #f7f0e0;
-  --rule: #3d2e1f;
-  --tab: #8b4518;
-  --shelf: #2c241c;
-  --muted: #6b5a48;
-  --ok: #2d5a3d;
-  --warn: #8a5a10;
-  --ghost: #5a4a6a;
+  --ink: #1e2438;
+  --paper: #eef2fa;
+  --card: #ffffff;
+  --rule: #c8d0e8;
+  --tab: #5b6fd6;
+  --shelf: #1a2038;
+  --muted: #6a7490;
+  --ok: #2d8a5a;
+  --warn: #c47820;
+  --ghost: #7a68b0;
+  --candy: #921b1b;
+  --mint: #3cb89a;
+  --grape: #8a62d8;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --display: "Nunito", system-ui, sans-serif;
 }
 
 *,
@@ -28,522 +33,823 @@ body {
   height: 100%;
 }
 
+/* 800×600: readable density (was too zoomed-out at 12.5) */
+html {
+  font-size: 14.5px;
+}
+
 body.rc {
-  font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 16px;
+  font-family: var(--display);
+  font-size: 1rem;
   color: var(--ink);
   background: var(--paper);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
+/* ── Toy aisle face (replaces brown-gold gameshelf / industrial) ── */
+body.rc.theme-toystore {
+  --ink: #1a2238;
+  --paper: #e8eef8;
+  --card: #ffffff;
+  --rule: #b8c4e0;
+  --tab: #5c6ee8;
+  --shelf: #141a2c;
+  --muted: #6a7494;
+  background:
+    radial-gradient(ellipse 90% 50% at 10% -10%, rgba(232, 90, 154, 0.12), transparent 50%),
+    radial-gradient(ellipse 70% 45% at 95% 0%, rgba(60, 184, 154, 0.1), transparent 45%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(138, 98, 216, 0.08), transparent 50%),
+    linear-gradient(180deg, #f4f6fc 0%, #e4eaf6 100%);
+  color: var(--ink);
+}
+
+body.rc.theme-toystore .rc-bg {
+  opacity: 0.07;
+}
+body.rc.theme-toystore .rc-bg-line {
+  color: var(--tab);
+  font-family: var(--display);
+  font-weight: 800;
+}
+
+/* ── chrome bar — leave room for host min/max/close ── */
 .rc-bg {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.07;
   overflow: hidden;
 }
-
 .rc-bg-line {
   position: absolute;
   white-space: nowrap;
-  font-family: "Special Elite", cursive;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.2em;
 }
-
 .rc-bg-a {
-  top: 35%;
-  left: -8%;
-  transform: rotate(-8deg);
-  font-size: 1.4rem;
+  top: 38%;
+  left: -6%;
+  transform: rotate(-7deg);
+  font-size: 1.35rem;
 }
-
 .rc-bg-b {
-  top: 62%;
-  left: 10%;
-  transform: rotate(5deg);
-  font-size: 0.9rem;
+  top: 58%;
+  left: 8%;
+  transform: rotate(4deg);
+  font-size: 0.85rem;
 }
 
 .rc-bar {
   position: relative;
-  z-index: 2;
+  z-index: 20;
+  flex: 0 0 1.7rem;
+  height: 1.7rem;
   display: flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 0.4rem 0.75rem;
-  background: var(--shelf);
-  color: var(--paper);
-  border-bottom: 3px double var(--tab);
+  gap: 0.4rem;
+  padding: 0 0.35rem 0 0.5rem;
+  background: linear-gradient(180deg, #1e2640 0%, #141a2c 100%);
+  color: #eef2ff;
+  border-bottom: 2px solid #6a7cf0;
+  min-width: 0;
 }
-
 .rc-logo {
-  font-family: "Special Elite", cursive;
-  font-size: 1.15rem;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 0.95rem;
   letter-spacing: 0.04em;
+  color: #ffffff;
+  flex: 0 0 auto;
+  white-space: nowrap;
 }
-
 .rc-logo strong {
-  color: #e8c090;
+  color: #ff8ec8;
 }
-
 .rc-sku {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  opacity: 0.75;
-  letter-spacing: 0.04em;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  opacity: 0.7;
+  letter-spacing: 0.03em;
+  flex: 0 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-
 .rc-drag {
-  flex: 1;
-  height: 1rem;
+  flex: 1 1 auto;
+  min-width: 1.5rem;
+  height: 0.85rem;
   cursor: grab;
   opacity: 0.35;
   background: repeating-linear-gradient(
     90deg,
     transparent,
-    transparent 3px,
-    rgba(255, 255, 255, 0.12) 3px,
-    rgba(255, 255, 255, 0.12) 4px
+    transparent 2px,
+    rgba(255, 255, 255, 0.14) 2px,
+    rgba(255, 255, 255, 0.14) 3px
   );
 }
+.rc-win {
+  flex: 0 0 auto;
+  min-width: 4.5rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  z-index: 30;
+}
 
+/* ── always-on catalog rail ── */
+.rc-catalog-rail {
+  position: relative;
+  z-index: 15;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.35rem 0.65rem;
+  background:
+    linear-gradient(90deg, rgba(92, 110, 232, 0.14), rgba(232, 90, 154, 0.1) 55%, rgba(60, 184, 154, 0.1));
+  border-bottom: 1px solid rgba(92, 110, 232, 0.28);
+  box-shadow: 0 2px 8px rgba(40, 50, 90, 0.06);
+  min-width: 0;
+}
+.rc-rail-mark {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: #fff;
+  background: linear-gradient(135deg, #5c6ee8, #e85a9a);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+}
+.rc-kicker {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--muted);
+  border: none;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.rc-rail-stats {
+  flex: 0 0 auto;
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+.rc-rail-pip {
+  display: inline-block;
+  min-width: 1.15rem;
+  text-align: center;
+  font-weight: 700;
+  padding: 0.08rem 0.25rem;
+  border-radius: 3px;
+  background: #fff;
+  border: 1px solid var(--rule);
+  color: #5c6ee8;
+}
+.rc-rail-dot {
+  opacity: 0.4;
+  margin: 0 0.1rem;
+}
+
+/* ── main ── */
 .rc-main {
   position: relative;
   z-index: 1;
-  height: calc(100% - 2.5rem);
+  flex: 1 1 auto;
+  min-height: 0;
   overflow: auto;
-  /* fill the Deck Host frame — don't strand a skinny column in 1024×768 */
-  padding: 0.75rem 1rem 1.5rem;
-  max-width: none;
+  padding: 0.55rem 0.7rem 0.85rem;
   width: 100%;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-.rc-kicker {
-  margin: 0 0 0.75rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
-  color: var(--muted);
-  border-left: 3px solid var(--tab);
-  padding-left: 0.55rem;
 }
 
 .rc-toolbar {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-  margin: 0.5rem 0 0.75rem;
+  gap: 0.5rem;
+  margin: 0.25rem 0 0.55rem;
 }
-
+.rc-toolbar-stock {
+  margin-top: 0.45rem;
+}
 .rc-h {
   margin: 0;
-  font-family: "Special Elite", cursive;
-  font-size: 1.15rem;
-  font-weight: 400;
-  letter-spacing: 0.03em;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  color: #2a3460;
 }
 
 .rc-btn {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
-  padding: 0.4rem 0.65rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  padding: 0.32rem 0.5rem;
   border: 1px solid var(--rule);
-  background: var(--card);
+  background: #fff;
   color: var(--ink);
   cursor: pointer;
-  border-radius: 0;
+  border-radius: 4px;
 }
-
 .rc-btn:hover {
-  background: #fff8ec;
   border-color: var(--tab);
+  background: #f0f3ff;
 }
-
 .rc-btn-primary {
-  background: var(--tab);
-  color: #fff8ec;
-  border-color: #5a2e10;
-}
-
-.rc-btn-primary:hover {
-  filter: brightness(1.08);
-  background: var(--tab);
+  background: linear-gradient(180deg, #6a7cf0, #4a58c8);
+  border-color: #3a48a8;
   color: #fff;
 }
-
+.rc-btn-primary:hover {
+  filter: brightness(1.06);
+  color: #fff;
+  background: linear-gradient(180deg, #7a8cff, #5a68d8);
+}
 .rc-btn-danger {
-  color: #6a2020;
-  border-color: #8a4040;
+  color: #a03040;
+  border-color: #e0a0a8;
   margin-left: auto;
 }
+.rc-btn-compact {
+  padding: 0.22rem 0.4rem;
+  font-size: 0.6rem;
+}
 
-.rc-back {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+.rc-back,
+.rc-back-inline {
+  font-family: var(--mono);
+  font-size: 0.62rem;
   background: none;
   border: none;
   color: var(--tab);
   cursor: pointer;
   padding: 0;
-  margin-bottom: 0.75rem;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
+  margin: 0;
+}
+.rc-back:hover,
+.rc-back-inline:hover {
+  color: var(--candy);
 }
 
-.rc-back:hover {
-  color: var(--ink);
-}
-
-/* producer shelf — index cards that fill the host width (desk ~1024) */
+/* ── producer tiles (cute cards, candy tab — not screws) ── */
 .rc-shelf {
   list-style: none;
   margin: 0;
-  padding: 0.15rem 0 0;
+  padding: 0;
   display: grid;
-  /* ~3 across at 1024 with chrome; grows/shrinks cleanly */
-  grid-template-columns: repeat(auto-fill, minmax(11.5rem, 1fr));
-  gap: 0.75rem 0.8rem;
+  grid-template-columns: repeat(auto-fill, minmax(9.2rem, 1fr));
+  gap: 0.55rem 0.55rem;
   align-items: stretch;
 }
-
-.rc-shelf-item {
+.rc-shelf-item,
+.rc-producer-tile {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  gap: 0.25rem;
-  min-height: 7.4rem;
-  padding: 0.55rem 0.6rem 0.5rem;
-  background: var(--card);
+  gap: 0.15rem;
+  height: 6.8rem;
+  min-height: 6.8rem;
+  max-height: 6.8rem;
+  padding: 0.55rem 0.5rem 0.4rem;
+  background: #fff;
   border: 1px solid var(--rule);
-  border-top: 3px solid var(--tab);
-  box-shadow: 1px 2px 0 rgba(40, 28, 16, 0.1);
+  border-radius: 8px;
+  box-shadow: 0 3px 0 rgba(90, 100, 160, 0.12), 0 6px 14px rgba(40, 50, 90, 0.06);
   cursor: pointer;
   text-align: left;
   font: inherit;
   color: inherit;
   width: 100%;
-  /* ruled index card */
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 1.05rem,
-    rgba(60, 40, 20, 0.07) 1.05rem,
-    rgba(60, 40, 20, 0.07) 1.08rem
-  );
-  transform: rotate(-0.35deg);
+  overflow: hidden;
+  transform: none;
+  background-image: none;
 }
-
-.rc-shelf-item:nth-child(even) {
-  transform: rotate(0.5deg);
-  border-top-color: var(--ok);
+.rc-producer-tile:hover {
+  border-color: #8a9af0;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 rgba(90, 100, 160, 0.14), 0 10px 18px rgba(40, 50, 90, 0.1);
 }
-
-.rc-shelf-item:nth-child(3n) {
-  transform: rotate(-0.7deg);
+.rc-tile-tab {
+  position: absolute;
+  top: 0;
+  left: 0.6rem;
+  width: 1.5rem;
+  height: 0.28rem;
+  border-radius: 0 0 3px 3px;
+  background: var(--tab);
 }
-
-.rc-shelf-item:hover {
-  background-color: #fffaf0;
-  filter: brightness(1.02);
-  z-index: 1;
+.rc-producer-tile.hue-0 { --tab: #5c6ee8; border-top: 3px solid #5c6ee8; }
+.rc-producer-tile.hue-1 { --tab: #e85a9a; border-top: 3px solid #e85a9a; }
+.rc-producer-tile.hue-2 { --tab: #3cb89a; border-top: 3px solid #3cb89a; }
+.rc-producer-tile.hue-3 { --tab: #e8a040; border-top: 3px solid #e8a040; }
+.rc-producer-tile.hue-4 { --tab: #8a62d8; border-top: 3px solid #8a62d8; }
+.rc-producer-tile.hue-0 .rc-tile-tab,
+.rc-producer-tile.hue-1 .rc-tile-tab,
+.rc-producer-tile.hue-2 .rc-tile-tab,
+.rc-producer-tile.hue-3 .rc-tile-tab,
+.rc-producer-tile.hue-4 .rc-tile-tab {
+  background: var(--tab);
 }
 
 .rc-shelf-name {
-  font-family: "Special Elite", cursive;
-  font-size: 0.95rem;
-  line-height: 1.2;
-  letter-spacing: 0.02em;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 0.78rem;
+  line-height: 1.15;
+  color: #1a2238;
 }
-
 .rc-shelf-chip {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem;
+  font-family: var(--mono);
+  font-size: 0.55rem;
   color: var(--tab);
   letter-spacing: 0.02em;
 }
-
 .rc-shelf-meta {
-  font-size: 0.78rem;
-  line-height: 1.3;
+  margin: 0.1rem 0 0;
+  font-size: 0.62rem;
+  line-height: 1.25;
   color: var(--muted);
-  margin: 0.15rem 0 0;
-  flex: 1;
   display: -webkit-box;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex: 1;
 }
-
 .rc-shelf-count {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.65rem;
-  color: var(--ink);
+  font-family: var(--mono);
+  font-size: 0.55rem;
   margin-top: auto;
-  padding-top: 0.3rem;
-  border-top: 1px dotted rgba(60, 40, 20, 0.25);
-  letter-spacing: 0.04em;
+  padding-top: 0.2rem;
+  border-top: 1px dashed rgba(100, 120, 180, 0.3);
+  color: var(--muted);
+}
+.rc-count-pip {
+  display: inline-block;
+  min-width: 1rem;
+  padding: 0.05rem 0.22rem;
+  margin-right: 0.15rem;
+  font-weight: 700;
+  text-align: center;
+  background: #eef1ff;
+  border: 1px solid #c8d0f0;
+  color: #4a58c8;
+  border-radius: 3px;
 }
 
-/* index card for open producer */
-.rc-index-card {
-  background: var(--card);
+/* ── open producer: compact strip (not a giant empty card) ── */
+.rc-bay-strip {
+  background: #fff;
   border: 1px solid var(--rule);
-  padding: 0.85rem 1rem 0.75rem;
-  margin-bottom: 1rem;
-  box-shadow: 3px 4px 0 rgba(40, 28, 16, 0.1);
-  background-image: repeating-linear-gradient(
-    transparent,
-    transparent 1.45rem,
-    rgba(60, 40, 20, 0.06) 1.45rem,
-    rgba(60, 40, 20, 0.06) 1.5rem
-  );
+  border-radius: 8px;
+  padding: 0.4rem 0.55rem 0.4rem;
+  box-shadow: 0 2px 8px rgba(40, 50, 90, 0.06);
+  margin: 0;
 }
-
-.rc-index-top {
+.rc-bay-strip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.rc-bay-id {
+  flex: 1 1 auto;
+  min-width: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1rem;
   align-items: baseline;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(60, 40, 20, 0.2);
-  padding-bottom: 0.4rem;
+  gap: 0.25rem 0.55rem;
 }
-
-.rc-index-name {
-  font-family: "Special Elite", cursive;
-  font-size: 1.25rem;
-}
-
-.rc-index-chip {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.85rem;
-  color: var(--tab);
-}
-
-.rc-field {
-  margin: 0.35rem 0;
+.rc-bay-id .rc-index-name {
+  font-family: var(--display);
+  font-weight: 800;
   font-size: 0.92rem;
-  line-height: 1.4;
+  color: #1a2238;
 }
-
-.rc-field strong {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+.rc-bay-id .rc-index-chip {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: #5c6ee8;
+}
+.rc-bay-oneliner {
+  margin: 0.2rem 0 0;
+  font-family: var(--mono);
+  font-size: 0.58rem;
   color: var(--muted);
-  display: block;
-  margin-bottom: 0.1rem;
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.rc-edit-link {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  margin-top: 0.5rem;
-}
-
-/* ROM bins — product slips in a denser list (still not producer cards) */
-.rc-bins {
+/* ── ROM stock shelf: carts are the product, soft retail tray ── */
+.rc-rom-shelf {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 0.65rem 0.45rem 0.75rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(7.6rem, 1fr));
+  gap: 0.65rem 0.5rem;
+  align-items: start;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(220, 228, 248, 0.9) 100%);
+  border: 1px solid #c8d2f0;
+  border-radius: 10px;
+  box-shadow: inset 0 1px 0 #fff, 0 4px 12px rgba(60, 80, 140, 0.08);
+}
+.rc-rom-slot {
   display: flex;
   flex-direction: column;
-  gap: 0.45rem;
-  /* use full width under company card */
-  max-width: none;
+  gap: 0.28rem;
+  min-width: 0;
+}
+.rc-rom-product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 11.2rem;
+  min-height: 11.2rem;
+  max-height: 11.2rem;
+  padding: 0.45rem 0.3rem 0.35rem;
+  margin: 0;
+  text-align: center;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  border: 1px solid #d0d8f0;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #ffffff 0%, #f0f4fc 100%);
+  box-shadow: 0 3px 0 #d0d8ec, 0 6px 12px rgba(50, 60, 110, 0.08);
+  overflow: hidden;
+}
+.rc-rom-product:hover {
+  border-color: #8a9af0;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 0 #c8d0e8, 0 10px 16px rgba(50, 60, 110, 0.12);
+}
+/* soft hang tab — toy blister, not industrial bolt */
+.rc-rom-peg {
+  position: absolute;
+  top: 0.45rem;
+  left: 50%;
+  width: 1.5rem;
+  height: 0.28rem;
+  margin-left: -0.8rem;
+  border-radius: 0 0 4px 4px;
+  background: linear-gradient(180deg, #5a5d687c, #a0aed0);
+  box-shadow: 0 1px 0 rgba(73, 73, 73, 0.7);
+  z-index: 3;
+}
+.rc-rom-peg::after {
+  display: none;
 }
 
-.rc-bin {
-  background: #faf6ee;
-  border: 1px solid var(--rule);
-  border-left: 4px solid var(--shelf);
-  padding: 0.5rem 0.65rem 0.45rem;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0.2rem 0.65rem;
-  box-shadow: none;
+/* footprint / plate / pins: rom-cart-face.css (shared with Launcher) */
+.rc-rom-face {
+  margin: 0.35rem auto 0.3rem;
+  flex: 0 0 auto;
 }
 
-.rc-bin-name {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.88rem;
-  font-weight: 600;
-  letter-spacing: 0.02em;
+.rc-rom-product-foot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  width: 100%;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  padding: 0 0.1rem;
 }
-
-.rc-bin-chip {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
-  color: var(--tab);
-  grid-column: 1;
-}
-
-.rc-status {
-  font-family: "IBM Plex Mono", monospace;
+.rc-rom-product-name {
+  font-family: var(--display);
+  font-weight: 800;
   font-size: 0.62rem;
+  line-height: 1.15;
+  color: #1a2238;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rc-rom-product-sub {
+  font-family: var(--mono);
+  font-size: 0.48rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rc-rom-product .rc-status {
+  margin: 0 0 0.05rem;
+  font-size: 0.5rem;
+  padding: 0.1rem 0.3rem;
+  letter-spacing: 0.06em;
+  justify-self: center;
+  grid-column: auto;
+  grid-row: auto;
+}
+.rc-rom-card-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+.rc-rom-card-actions .rc-btn {
+  flex: 1;
+  font-size: 0.55rem;
+  padding: 0.18rem 0.25rem;
+}
+
+/* status chips — soft candy stamps on light aisle */
+.rc-status {
+  font-family: var(--mono);
+  font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  padding: 0.15rem 0.35rem;
+  padding: 0.12rem 0.3rem;
   border: 1px solid var(--rule);
-  justify-self: end;
-  align-self: start;
-  grid-column: 2;
-  grid-row: 1 / span 2;
+  border-radius: 3px;
+  background: #f4f6fc;
+  color: var(--muted);
 }
-
 .rc-status[data-s="desk"] {
-  background: #d8efe0;
-  border-color: var(--ok);
+  background: #e4f8ee;
+  border-color: #7ad0a0;
+  color: #1a7a48;
 }
-
 .rc-status[data-s="shipped"] {
-  background: #f5e0c8;
-  border-color: var(--warn);
+  background: #fff0d8;
+  border-color: #e8b060;
+  color: #8a5010;
 }
-
 .rc-status[data-s="idea"] {
-  background: #e8e0f0;
-  border-color: var(--ghost);
+  background: #eee8ff;
+  border-color: #b0a0e8;
+  color: #5848a0;
 }
-
-.rc-status[data-s="mausoleum"],
-.rc-status[data-s="broken"] {
-  background: #ddd;
+.rc-status[data-s="mausoleum"] {
+  background: #ececf0;
+  border-color: #b0b0b8;
   border-style: dashed;
+  color: #686870;
+}
+.rc-status[data-s="broken"] {
+  background: #ffe8ec;
+  border-color: #e09098;
+  border-style: dashed;
+  color: #a02838;
 }
 
-.rc-bin-desc {
-  grid-column: 1 / -1;
-  margin: 0.15rem 0 0;
-  font-size: 0.85rem;
-  line-height: 1.35;
-  color: var(--ink);
-  font-family: "Libre Baskerville", Georgia, serif;
-}
-
-.rc-bin-addr {
-  grid-column: 1 / -1;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.68rem;
-  color: var(--muted);
-  word-break: break-all;
-}
-
-/* open producer: company index card full width, then ROM slips */
-#viewProducer .rc-index-card {
-  max-width: none;
-}
-
-.rc-toolbar {
-  max-width: none;
-}
-
-.rc-bin-actions {
-  grid-column: 1 / -1;
-  margin-top: 0.25rem;
-}
-
-.rc-bin-actions button {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.7rem;
-  background: none;
-  border: none;
-  color: var(--tab);
-  cursor: pointer;
-  text-decoration: underline;
-  padding: 0;
-}
-
-.rc-empty {
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.85rem;
-  color: var(--muted);
-  padding: 0.75rem;
-  border: 1px dashed var(--rule);
-}
-
-/* dialogs */
+/* ── dialogs ── */
 .rc-dialog {
-  border: 2px solid var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
   padding: 0;
-  background: var(--card);
-  max-width: 26rem;
-  width: calc(100% - 2rem);
-  box-shadow: 6px 8px 0 rgba(40, 28, 16, 0.15);
+  max-width: min(36rem, 94vw);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 16px 40px rgba(30, 40, 80, 0.2);
 }
-
 .rc-dialog::backdrop {
-  background: rgba(30, 22, 14, 0.45);
+  background: rgba(30, 40, 70, 0.35);
 }
-
+.rc-dialog-rom {
+  max-width: min(42rem, 96vw);
+}
 .rc-form {
-  padding: 1rem 1.1rem 1.1rem;
+  padding: 0.75rem 0.85rem 0.85rem;
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.4rem;
 }
-
 .rc-form-h {
   margin: 0 0 0.25rem;
-  font-family: "Special Elite", cursive;
-  font-weight: 400;
-  font-size: 1.1rem;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1rem;
 }
-
 .rc-form label {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
+  font-family: var(--mono);
+  font-size: 0.62rem;
   color: var(--muted);
   letter-spacing: 0.03em;
 }
-
 .rc-form input,
 .rc-form textarea,
 .rc-form select {
-  font-family: "Libre Baskerville", Georgia, serif;
-  font-size: 0.95rem;
-  padding: 0.4rem 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  padding: 0.35rem 0.4rem;
   border: 1px solid var(--rule);
-  background: #fffdf8;
+  border-radius: 4px;
+  background: #f8faff;
   color: var(--ink);
-  border-radius: 0;
 }
+.rc-form #r_plate_css {
+  font-size: 0.68rem;
+  min-height: 3.5rem;
+  white-space: pre;
+  tab-size: 2;
+}
+.rc-check {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.4rem !important;
+}
+.rc-hint {
+  font-size: 0.55rem;
+  color: var(--muted);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.rc-form-rom-grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem 1rem;
+  align-items: start;
+}
+.rc-form-rom-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 0;
+}
+@media (max-width: 520px) {
+  .rc-form-rom-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.rc-case-shell-block {
+  margin: 0.15rem 0;
+  padding: 0.4rem 0.45rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  background: #f4f6fc;
+}
+.rc-case-shell-lab {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.3rem;
+}
+.rc-case-shell-toggle {
+  display: flex;
+  gap: 0.3rem;
+}
+.rc-shell-btn {
+  flex: 1;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  padding: 0.35rem 0.4rem;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 4px;
+}
+.rc-shell-btn.is-on {
+  border-color: #5c6ee8;
+  background: #eef1ff;
+  font-weight: 700;
+  color: #3a48a8;
+}
+.rc-julie-tint-row {
+  margin-top: 0.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+}
+.rc-julie-tints {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.28rem;
+}
+.rc-tint-swatch {
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 2px;
+  border: none;
+  background: var(--sw, #888);
+  cursor: pointer;
+  padding: 0;
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.35),
+    inset -1px -1px 0 rgba(0, 0, 0, 0.45),
+    1px 1px 0 rgba(0, 0, 0, 0.25);
+}
+.rc-tint-swatch.is-on {
+  outline: 2px solid #5c6ee8;
+  outline-offset: 1px;
+}
+.rc-julie-custom {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.3rem !important;
+  font-size: 0.55rem;
+}
+.rc-julie-custom input[type="color"] {
+  width: 1.6rem;
+  height: 1.3rem;
+  padding: 0;
+  border: 1px solid var(--rule);
+  background: #fff;
+  cursor: pointer;
+}
+.rc-julie-custom input[type="text"] {
+  width: 5.5rem;
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.3rem;
+}
+
+.rc-plate-preview-wrap {
+  margin: 0;
+  padding: 0.55rem 0.6rem 0.65rem;
+  border: 1px dashed #b8c4e8;
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 30%, rgba(255, 255, 255, 0.9), rgba(220, 228, 248, 0.7));
+  text-align: center;
+  min-width: 7.5rem;
+}
+.rc-plate-preview-lab {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 0.4rem;
+}
+
+/* cart plastic = rom-cart-face.css (linked in index.html · shared with Launcher) */
 
 .rc-form-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: 0.35rem;
   align-items: center;
   margin-top: 0.35rem;
 }
-
 .rc-form-err {
   margin: 0;
-  color: #8a2020;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.75rem;
+  color: #a02838;
+  font-family: var(--mono);
+  font-size: 0.7rem;
 }
 
 .rc-foot {
-  margin-top: 2rem;
-  font-family: "IBM Plex Mono", monospace;
-  font-size: 0.72rem;
+  margin-top: 1.1rem;
+  font-family: var(--mono);
+  font-size: 0.58rem;
   color: var(--muted);
-  border-top: 1px solid rgba(60, 40, 20, 0.25);
-  padding-top: 0.65rem;
+  border-top: 1px solid rgba(120, 140, 190, 0.25);
+  padding-top: 0.45rem;
 }
 
-.rc-main::-webkit-scrollbar {
-  width: 10px;
+.rc-empty {
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  padding: 0.75rem;
+  grid-column: 1 / -1;
 }
-.rc-main::-webkit-scrollbar-thumb {
-  background: var(--tab);
-  border: 2px solid var(--paper);
+
+/* legacy bins (unused path) */
+.rc-bins {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.rc-index-card {
+  /* kept for form/legacy; bay uses .rc-bay-strip */
+  display: none;
 }

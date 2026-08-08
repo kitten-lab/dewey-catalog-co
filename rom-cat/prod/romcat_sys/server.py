@@ -181,12 +181,59 @@ class Handler(SimpleHTTPRequestHandler):
             }
             if launcher_show is not None:
                 row["launcher_show"] = launcher_show
+            # Logo plate CSS (launcher cart sticker). Only touch when client sends it
+            # so hide/show toggle does not wipe custom plates.
+            if "plate_css" in payload:
+                pc = str(payload.get("plate_css") or "").strip()
+                # light guard — declarations only, desk-local
+                low = pc.lower()
+                if any(
+                    b in low
+                    for b in ("</", "<script", "expression(", "javascript:")
+                ):
+                    pc = ""
+                if len(pc) > 4000:
+                    pc = pc[:4000]
+                row["plate_css"] = pc
+            # Case shell: classicboi | julie (+ julie_tint presets)
+            if "case_shell" in payload:
+                shell = str(payload.get("case_shell") or "classicboi").strip().lower()
+                if shell not in ("classicboi", "julie"):
+                    shell = "classicboi"
+                row["case_shell"] = shell
+            if "julie_tint" in payload:
+                tint = str(payload.get("julie_tint") or "red").strip()
+                # preset id OR #rgb/#rrggbb/#rrggbbaa (hands custom intense plastics)
+                _presets = {
+                    "red",
+                    "crimson",
+                    "pink",
+                    "purple",
+                    "mint",
+                    "clear",
+                    "blue",
+                    "amber",
+                    "smoke",
+                }
+                low = tint.lower()
+                if low in _presets:
+                    tint = low
+                elif low.startswith("#") and len(low) in (4, 7, 9) and all(
+                    c in "0123456789abcdef#" for c in low
+                ):
+                    tint = low
+                else:
+                    tint = "red"
+                row["julie_tint"] = tint
             found = False
             for i, r in enumerate(roms):
                 if r.get("id") == rid:
                     merged = {**r, **row}
                     if launcher_show is None and "launcher_show" in r:
                         merged["launcher_show"] = r["launcher_show"]
+                    # empty string clears plate customization
+                    if row.get("plate_css") == "":
+                        merged.pop("plate_css", None)
                     roms[i] = merged
                     found = True
                     break
@@ -195,6 +242,12 @@ class Handler(SimpleHTTPRequestHandler):
                     row["launcher_show"] = status in ("desk", "shipped") and bool(
                         row.get("address")
                     )
+                if row.get("plate_css") == "":
+                    row.pop("plate_css", None)
+                if "case_shell" not in row:
+                    row["case_shell"] = "classicboi"
+                if "julie_tint" not in row:
+                    row["julie_tint"] = "red"
                 roms.append(row)
             doc["roms"] = roms
             save_catalog(doc)

@@ -9,7 +9,7 @@
       "id": "dcc",
       "name": "Dewey Catalog Co.",
       "chip_code": "CO.DCC",
-      "mission": "We file what the other makers make. We file ourselves. Quaint library systems for lists that matter.",
+      "mission": "First there was DEWEY'S DECIMALS. Now, there is whole catalogs of cards made of the same hope! Dewey Catalogs what you want to keep -- but not the DATA. That's DatBOX's thing.",
       "hands_ven": "DCO",
       "notes": "First ROM sets the house look. Keep the sticky cabinet (cat-o-roms) as a separate cute accident — not this catalog.",
       "address": "ALICE_BOX/dewey-catalog-co/"
@@ -28,7 +28,7 @@
       "name": "DatBox Studio",
       "chip_code": "CO.DBS",
       "mission": "Specialized bags for world chunks.",
-      "hands_ven": "",
+      "hands_ven": "Chip Dayta",
       "notes": "",
       "address": "ALICE_BOX/datbox-studio/"
     },
@@ -97,12 +97,21 @@
     },
     {
       "id": "jx",
-      "name": "Jack's Cross",
+      "name": "Jack's Cross (retired house)",
       "chip_code": "CO.JX",
-      "mission": "Concordance desk and Cab into jx papers.",
+      "mission": "Retired product house. Story/faction only. Live ROMs under L.E. AWN Industries.",
       "hands_ven": "",
-      "notes": "",
+      "notes": "2026-08-07: products moved to CO.LEA. Folder jacks-cross is a pointer stub.",
       "address": "ALICE_BOX/jacks-cross/"
+    },
+    {
+      "id": "lea",
+      "name": "L.E. AWN Industries",
+      "chip_code": "CO.LEA",
+      "mission": "We are in the future. SophiaDesk extract + EM Translation Bench + Glass Compost. Not pocket clay; not Jack's Cross.",
+      "hands_ven": "",
+      "notes": "Named itself on leaf[0] SOPHIADESK pitch. L.E. AWN sounds like 'we are in the future'.",
+      "address": "ALICE_BOX/le-awn-industries/"
     }
   ],
   "roms": [
@@ -116,29 +125,46 @@
       "address": "ALICE_BOX/dewey-catalog-co/rom-cat/",
       "notes": "Built from DCO REQ rev 7. plate_css customizes launcher logo sticker.",
       "launcher_show": true,
-      "plate_css": "background: linear-gradient(165deg, #2a2010 0%, #120c08 55%, #0a0806 100%);\ncolor: #f0c060;\nfont-family: Georgia, \"Times New Roman\", serif;\nfont-size: 0.52rem;\nletter-spacing: 0.06em;"
+      "plate_css": "background: repeating-linear-gradient(\n    to bottom,\n    blue 0px,\n    darkblue 2px,\n    blue 3px,\n    darkblue 4px\n  );\nbox-shadow: inset 0 0 6px #00000033;\nfont-size: 0.7rem;\nborder: 1px solid blue;\nbox-shadow: 1px 1px 0 #ffffff33, -1px -1px #333;",
+      "case_shell": "classicboi",
+      "julie_tint": "red"
     },
     {
       "id": "sticky-cat",
       "producer_id": "dcc",
-      "name": "cat-o-roms (sticky face)",
+      "name": "TINY notes",
       "chip_code": "CO.DCC-STICKY",
       "description": "Cute crooked sticky drawer. Not the yellow pages. Keep; do not destroy; do not pretend it is Fry's.",
       "status": "desk",
       "address": "ALICE_BOX/dewey-catalog-co/cat-o-roms/",
       "notes": "Accidental art object. May rehome as meaningless sticky-notes ROM later.",
-      "launcher_show": false
+      "launcher_show": true,
+      "case_shell": "classicboi",
+      "julie_tint": "red"
     },
     {
       "id": "lorebox",
       "producer_id": "datbox",
       "name": "loreBOX",
       "chip_code": "CO.DAT-LORE",
-      "description": "LORE mats · reference DATBOX ROM. No longer available for new clay — see VENBOX REQ.",
-      "status": "broken",
+      "description": "LORE papers · Papers, Please (store/deck/chip). Empty footing — no v1 garbage.",
+      "status": "desk",
       "address": "ALICE_BOX/datbox-studio/lore-box/",
-      "notes": "2026-07-30: parked for new work. Successor proposed: VENBOX (CO.DAT-VEN) under DCO REQ FK-DC-req-datbox-venbox-charbox-VDVC-b2e801. Existing .lorebox mats excavate later.",
-      "launcher_show": true
+      "notes": "v2 2026-08-02: INSPECT.deck + lore_….chip. Port 42929. v1 JSON bags frozen at lore-box-v1-archive (42928).",
+      "launcher_show": false,
+      "case_shell": "classicboi",
+      "julie_tint": "red"
+    },
+    {
+      "id": "lorebox-v1-archive",
+      "producer_id": "datbox",
+      "name": "loreBOX v1 archive",
+      "chip_code": "CO.DAT-LORE-V1",
+      "description": "Frozen JSON .lorebox bags. Half-ass footing. Pull by hand if needed.",
+      "status": "archive",
+      "address": "ALICE_BOX/datbox-studio/lore-box-v1-archive/",
+      "notes": "Port 42928. Do not migrate into v2.",
+      "launcher_show": false
     },
     {
       "id": "shotbox",
@@ -205,7 +231,9 @@
       "address": "ALICE_BOX/charlies-toys/sdk-import-station/",
       "notes": "",
       "launcher_show": true,
-      "plate_css": "background-color: #051c08;\nbackground-image: radial-gradient(rgba(18, 190, 35, 0.2), #051c08 120%);\ncolor: #33ff33;"
+      "plate_css": "background-color: #051c08;\nfont-weight: 700;\nbackground-image: radial-gradient(rgba(18, 190, 35, 0.2), #051c08 120%);\ncolor: #33ff33;",
+      "case_shell": "classicboi",
+      "julie_tint": "#0f5c00"
     },
     {
       "id": "ineffable",
@@ -216,7 +244,10 @@
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/ineffable-box/",
       "notes": "",
-      "launcher_show": true
+      "launcher_show": true,
+      "plate_css": "background: radial-gradient(ellipse 60% 40% at 80% 10%, rgba(200, 80, 255, 0.35), transparent 50%), radial-gradient(ellipse 50% 50% at 10% 80%, rgba(80, 255, 180, 0.12), transparent 45%), radial-gradient(ellipse 40% 30% at 40% 40%, rgba(255, 60, 120, 0.15), transparent 40%), linear-gradient(160deg, #08040e 0%, #140818 40%, #451365 70%, #591dd1 100%)",
+      "case_shell": "julie",
+      "julie_tint": "#7f4195"
     },
     {
       "id": "machina",
@@ -227,7 +258,8 @@
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/meta-time-machine/",
       "notes": "",
-      "launcher_show": true
+      "launcher_show": true,
+      "plate_css": "background-color: #0f172a; /* Slate 900 */\n  background-image: \n    radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px), \n    radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);\n  background-size: 24px 24px;\n  background-position: 0 0, 12px 12px; /* Staggers the dots */"
     },
     {
       "id": "deck-host",
@@ -289,23 +321,26 @@
       "producer_id": "kde",
       "name": "My PI: Kitten Detective Chapter I",
       "chip_code": "CO.KDE-002-KD1",
-      "description": "A strange town. A detective who can't remember her own name. The cases keep looping. Can the mystery be found between the lines?",
-      "status": "idea",
-      "address": "",
-      "notes": " · was CO.FIN; merged into CO.KDE",
-      "launcher_show": true
+      "description": "Detective K · Kitten Noir. Papers-Please desk: office, papers, talk boxes. Title → CSS detective office (v0).",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/kde-kitten-detective/",
+      "notes": "was CO.FIN → CO.KDE. Sister: CO.KDE-001-INSTR Notes & Chords. v0 = title + office room only.",
+      "launcher_show": true,
+      "plate_css": "background-color: #1a1018;\nfont-weight: 700;\nbackground-image: radial-gradient(#2a1520, #0c0a0e 120%);\ncolor: #c44a6a;\nborder: 1px dashed #c44a6a;"
     },
     {
       "id": "kde-notes-chords",
       "producer_id": "kde",
-      "name": "KDE Notes & Chords",
+      "name": "DETECTIVE K: Notes & Chords",
       "chip_code": "CO.KDE-001-INSTR",
       "description": "Instrumental Stories / KDE Notes & Chords: one row of 15 keys. Match plays chord from strip positions. Narrative fragments, not cash prizes.",
       "status": "desk",
       "address": "ALICE_BOX/charlies-toys/kde-notes-chords/",
       "notes": "Producer CO.KDE (not CO.TOY). Path under charlies-toys is temporary housing. UI: ONE horizontal strip (musical sheet), not a casino 5x3 grid.",
       "launcher_show": true,
-      "plate_css": "background: linear-gradient(160deg, #1a1020 0%, #0c0a0e 50%, #141018 100%);\ncolor: #c45c6a;\nfont-family: \"Special Elite\", Georgia, serif;\nfont-size: 0.52rem;\nletter-spacing: 0.05em;"
+      "plate_css": "background-color: darkred;\nfont-weight: 700;\nbackground-image: radial-gradient(darkred, #051c08 120%);\ncolor: red;\nborder: 1px dashed darkred;",
+      "case_shell": "julie",
+      "julie_tint": "#a80000"
     },
     {
       "id": "pocket-chapbook",
@@ -316,7 +351,10 @@
       "status": "desk",
       "address": "ALICE_BOX/my-pocket-things/pocket-chapbook/",
       "notes": "DCO REQ SKU 001-CHAPS. Empty shells for Ocean Cried Blood / Body Is a Water.",
-      "launcher_show": true
+      "launcher_show": true,
+      "plate_css": "font-size: 0.7em;",
+      "case_shell": "julie",
+      "julie_tint": "#1f677f"
     },
     {
       "id": "pocket-notebook",
@@ -327,7 +365,65 @@
       "status": "desk",
       "address": "ALICE_BOX/my-pocket-things/pocket-notebook/",
       "notes": "DCO REQ SKU 002-NOTES. Port 43165. Seeded Daily Tracker from DOS betsoft office.",
-      "launcher_show": true
+      "launcher_show": true,
+      "case_shell": "julie",
+      "julie_tint": "#0e1f00",
+      "plate_css": "font-size: 0.7rem;"
+    },
+    {
+      "id": "pocket-journal",
+      "producer_id": "mypt",
+      "name": "My Pocket Journal",
+      "chip_code": "CO.MYPT-003-JOURNAL",
+      "description": "Cloth journals as .bok packages — Markdown pages on disk for you and agents. Map / why / bag pulls. Fork of notebook so storage can change without losing work-brain.",
+      "status": "mausoleum",
+      "address": "ALICE_BOX/my-pocket-things/pocket-journal/",
+      "notes": "Port 43166 · books/*.bok · launcher recipe pocket-journal · run-in-deck-host.py",
+      "launcher_show": false,
+      "case_shell": "julie",
+      "julie_tint": "#3d2818",
+      "plate_css": "font-size: 0.68rem; letter-spacing: 0.04em; background: linear-gradient(165deg, #4a3420 0%, #2a1c12 100%); color: #e8d4a8; border: 1px solid #c4a060;"
+    },
+    {
+      "id": "receiver",
+      "producer_id": "chesters",
+      "name": "Receiver",
+      "chip_code": "CO.RECV-001",
+      "description": "Felt multi-object stage (host island). Spawn books, leaves, shelves — half-state rebirth container. Not My Pocket Desktop.",
+      "status": "mausoleum",
+      "address": "ALICE_BOX/the-deck-host/receiver/",
+      "notes": "Lives under Deck Host. Port 43200 · USER chips/bins/configs. SophiaDesk (CO.LEA-001-DESK) is separate — not Receiver v2.",
+      "launcher_show": false,
+      "case_shell": "classicboi",
+      "plate_css": "background: linear-gradient(165deg, #2a5540 0%, #1a3d2a 45%, #143224 100%); color: #e8f0e4; border: 1px solid #3d5c48;",
+      "julie_tint": "red"
+    },
+    {
+      "id": "sophia-desk",
+      "producer_id": "lea",
+      "name": "SophiaDesk",
+      "chip_code": "CO.LEA-001-DESK",
+      "description": "Consider desk — chips, boards, felt, papers please. L.E. AWN extract workshop. Not a pocket object; not Receiver v2.",
+      "status": "desk",
+      "address": "ALICE_BOX/le-awn-industries/sophia-desk/",
+      "notes": "Port 43167 · was CO.MYPT-004-DESK / pocket-desktop · launcher recipes sophia-desk + pocket-desktop alias.",
+      "launcher_show": true,
+      "case_shell": "julie",
+      "julie_tint": "#1a2e24",
+      "plate_css": "font-size: 0.68rem; letter-spacing: 0.04em; background: linear-gradient(165deg, #2a4034 0%, #142018 100%); color: #d8e8d0; border: 1px solid #5a7a68;"
+    },
+    {
+      "id": "pocket-desktop",
+      "producer_id": "lea",
+      "name": "SophiaDesk (legacy id)",
+      "chip_code": "CO.LEA-001-DESK",
+      "description": "Alias of sophia-desk for old launcher bookmarks.",
+      "status": "desk",
+      "address": "ALICE_BOX/le-awn-industries/sophia-desk/",
+      "notes": "Do not show as separate product long-term; launcher_show false.",
+      "launcher_show": false,
+      "case_shell": "julie",
+      "julie_tint": "#1a2e24"
     },
     {
       "id": "rom-launcher",
@@ -335,21 +431,61 @@
       "name": "ROM Launcher",
       "chip_code": "CO.HOST-001-LAUNCH",
       "description": "Start menu for ROMs. Primary Deck Host face. Cases on a desk. Quiet launch.",
-      "status": "desk",
+      "status": "shipped",
       "address": "ALICE_BOX/the-deck-host/rom-launcher/",
       "notes": "Reads ROM Cat as identity source of truth. launches.json recipes = run_script/port/flags only.",
-      "launcher_show": false
+      "launcher_show": false,
+      "case_shell": "julie",
+      "julie_tint": "clear"
+    },
+    {
+      "id": "emt-bench",
+      "producer_id": "lea",
+      "name": "EM Translation Bench",
+      "chip_code": "CO.LEA-002-EMT",
+      "description": "Hebrew / concordance / code-bay study bench. Letters, Strong foil, papers, Cab.",
+      "status": "desk",
+      "address": "ALICE_BOX/le-awn-industries/emt-bench/",
+      "notes": "Port 43150 · was Jack's Concor / CO.JX-001-CONCOR · launcher emt-bench + concor alias.",
+      "launcher_show": true
     },
     {
       "id": "concor",
-      "producer_id": "jx",
-      "name": "Jack's Concor",
-      "chip_code": "CO.JX-001-CONCOR",
-      "description": "Desk concordance: letters Strong English Cab.",
+      "producer_id": "lea",
+      "name": "EMT Bench (legacy id)",
+      "chip_code": "CO.LEA-002-EMT",
+      "description": "Alias of emt-bench for old launcher bookmarks.",
       "status": "desk",
-      "address": "ALICE_BOX/jacks-cross/the-concor/",
-      "notes": "",
-      "launcher_show": true
+      "address": "ALICE_BOX/le-awn-industries/emt-bench/",
+      "notes": "launcher_show false long-term.",
+      "launcher_show": false
+    },
+    {
+      "id": "glass-compost",
+      "producer_id": "lea",
+      "name": "The Glass Compost",
+      "chip_code": "CO.LEA-003-GLASS",
+      "description": "Hand-cut branches on the chat mountain. Trunks, leaves, parsed marks. Live cut room.",
+      "status": "desk",
+      "address": "ALICE_BOX/le-awn-industries/glass-compost/",
+      "notes": "Port 43182 · was nim-bench · reads yard.db from mausoleum forestry.",
+      "launcher_show": true,
+      "plate_css": "background: linear-gradient(160deg, #2a2218 0%, #16130f 55%, #1a1410 100%);\ncolor: #e0a050;\nfont-family: IBM Plex Mono, monospace;\nfont-weight: 600;\nborder: 1px solid #c46b3a;\nbox-shadow: inset 0 0 8px #00000044;",
+      "case_shell": "classicboi",
+      "julie_tint": "clear"
+    },
+    {
+      "id": "nim-yard",
+      "producer_id": "jx",
+      "name": "Nim Yard (mausoleum)",
+      "chip_code": "CO.JX-002-NIM",
+      "description": "Archived browse/tag yard. Not the daily app. Dig later.",
+      "status": "broken",
+      "address": "C:/Builds/_mausoleum/alice-box-exiles/nim-data-forestry/",
+      "notes": "Mausoleum 2026-08-07. Live cut room is glass-compost.",
+      "launcher_show": false,
+      "case_shell": "classicboi",
+      "julie_tint": "clear"
     },
     {
       "id": "injector",
@@ -368,10 +504,58 @@
       "name": "sonaBOX",
       "chip_code": "CO.DBS-SONA",
       "description": "A box to hold your beings in. Especially if you want to forget their first names.",
-      "status": "desk",
+      "status": "mausoleum",
       "address": "ALICE_BOX/datbox-studio/sona-box/",
       "notes": "Slice 0: .safebox SQLite · KVEN · notches · MD leaves. Port 42935.",
+      "launcher_show": false,
+      "case_shell": "classicboi",
+      "julie_tint": "red"
+    },
+    {
+      "id": "reqrep-414b",
+      "producer_id": "bigbox",
+      "name": "ReqRep",
+      "chip_code": "CO.BBC-002-RR",
+      "description": "Request bay — numbered blocks, Hands close AGREED, scope lock, Product prep sign-off.",
+      "status": "desk",
+      "address": "ALICE_BOX/big-box-company/reqrep/",
+      "notes": "Port 42962 · prod/run-in-deck-host.py · GRM density · launches recipe reqrep-414b",
       "launcher_show": true
+    },
+    {
+      "id": "bugbox-385f",
+      "producer_id": "bigbox",
+      "name": "BugBox",
+      "chip_code": "CO-BBC-003-BB",
+      "description": "A container to report all your bugs quickly. Connectable to RepReq.",
+      "status": "idea",
+      "address": "ALICE_BOX/big-box-company/bugbox",
+      "notes": "",
+      "launcher_show": true
+    },
+    {
+      "id": "eddies-encoder-eee",
+      "producer_id": "charlies",
+      "name": "Eddy's Encoder",
+      "chip_code": "CO.TOY-004-EEE",
+      "description": "Dirty KVEN mint envelope. Strange pull, manual bag, links. Karaoke Eddie · not Kevin.",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/eddies-encoder/",
+      "notes": "Port 43145 · Deck Host 800×600 · safe_box eddie.teehee + eddylinks.teehee · REQ-003",
+      "launcher_show": true
+    },
+    {
+      "id": "hermes",
+      "producer_id": "charlies",
+      "name": "Hermes",
+      "chip_code": "CO.TOY-005-HERMES",
+      "description": "Mailer: address + payload into Pocket Desktop inbox. Thin Charlie toy.",
+      "status": "desk",
+      "address": "ALICE_BOX/charlies-toys/hermes/",
+      "notes": "Port 43169 · requires Pocket Desktop · POST pocket /api/mail/send",
+      "launcher_show": true,
+      "case_shell": "classicboi",
+      "julie_tint": "mint"
     }
   ]
 }

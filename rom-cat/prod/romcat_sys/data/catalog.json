@@ -385,6 +385,20 @@
       "plate_css": "font-size: 0.68rem; letter-spacing: 0.04em; background: linear-gradient(165deg, #4a3420 0%, #2a1c12 100%); color: #e8d4a8; border: 1px solid #c4a060;"
     },
     {
+      "id": "pocket-go",
+      "producer_id": "mypt",
+      "name": "My Pocket Go",
+      "chip_code": "CO.MYPT-004-GO",
+      "description": "Early internet. Worlds as pages in a Win 3.1 WWW explorer. Not a library. Not a terminal.",
+      "status": "desk",
+      "address": "ALICE_BOX/my-pocket-things/pocket-go/",
+      "notes": "Port 43210 · vault in ~library · WWW chrome · go.com pipe",
+      "launcher_show": true,
+      "case_shell": "julie",
+      "julie_tint": "#1a3a8a",
+      "plate_css": "font-size: 0.7rem; letter-spacing: 0.06em; background: linear-gradient(to top, #000080, #0000cd); color: #fff; border: 1px solid #000080;"
+    },
+    {
       "id": "receiver",
       "producer_id": "chesters",
       "name": "Receiver",

@@ -220,6 +220,7 @@
           `<span class="${shellCls}" ${hex ? `style="--julie:${esc(tint)}"` : ""}>` +
           `<span class="rc-prev-shell"></span>` +
           `<span class="rc-prev-notch" aria-hidden="true"></span>` +
+          `<span class="rc-prev-well" aria-hidden="true"></span>` +
           `<span class="rc-prev-badge">${esc(shortPlate(r.chip_code, r.name))}</span>` +
           `<span class="rc-plate-preview-plate rc-rom-face-plate" data-rom-plate="${esc(
             r.id
@@ -227,6 +228,7 @@
           `<span class="rc-prev-sku">${esc(
             (r.chip_code || "CO.SKU").slice(0, 20)
           )}</span>` +
+          `<span class="rc-prev-shutter" aria-hidden="true"></span>` +
           `<span class="rc-prev-pins" aria-hidden="true"></span>` +
           `</span>` +
           `<span class="rc-rom-product-foot">` +
@@ -256,6 +258,7 @@
       plate.textContent = r.name || "ROM";
       const raw = (r.plate_css || "").trim();
       if (raw) plate.setAttribute("style", raw);
+      plate.classList.toggle("has-custom-plate", !!raw);
     });
 
     romBins.querySelectorAll("[data-edit-rom]").forEach((btn) => {
@@ -405,9 +408,11 @@
       );
     }
     plate.removeAttribute("style");
+    plate.classList.remove("has-custom-plate");
     const raw = (cssEl && cssEl.value || "").trim();
     if (raw) {
       plate.setAttribute("style", raw);
+      plate.classList.add("has-custom-plate");
     }
     if (cart) {
       const shell = getCaseShell();

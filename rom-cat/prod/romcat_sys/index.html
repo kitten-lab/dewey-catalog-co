@@ -80,7 +80,7 @@
             <label>Release status
               <select name="status" id="r_status">
                 <option value="idea">idea</option>
-                <option value="desk">desk</option>
+                <option value="live">live</option>
                 <option value="shipped">shipped</option>
                 <option value="mausoleum">mausoleum</option>
                 <option value="broken">broken</option>
@@ -95,7 +95,7 @@
                 <button type="button" class="rc-shell-btn" id="r_shell_julie" data-shell="julie">julie</button>
               </div>
               <input type="hidden" id="r_case_shell" value="classicboi" />
-              <div class="rc-julie-tint-row" id="r_julie_tint_row" hidden>
+              <div class="rc-julie-tint-row" id="r_julie_tint_row" style="display:none;">
                 <span class="rc-hint">julie tint · presets or custom #hex (intense OK)</span>
                 <div class="rc-julie-tints" id="r_julie_tints">
                   <button type="button" class="rc-tint-swatch is-on" data-tint="red" title="red" style="--sw:#c01830"></button>
@@ -127,9 +127,11 @@
             <div class="rc-plate-preview-cart shell-classicboi" id="r_case_preview" title="cart face (shared)">
               <span class="rc-prev-shell" aria-hidden="true"></span>
               <span class="rc-prev-notch" aria-hidden="true"></span>
+              <span class="rc-prev-well" aria-hidden="true"></span>
               <span class="rc-prev-badge" id="r_prev_badge">ROM</span>
               <div class="rc-plate-preview-plate" id="r_plate_preview">ROM NAME</div>
               <span class="rc-prev-sku" id="r_prev_sku">CO.SKU</span>
+              <span class="rc-prev-shutter" aria-hidden="true"></span>
               <span class="rc-prev-pins" aria-hidden="true"></span>
             </div>
             <span class="rc-hint">classicboi / julie · name follows field</span>
